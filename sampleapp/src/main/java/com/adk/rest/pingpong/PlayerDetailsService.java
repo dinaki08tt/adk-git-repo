@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.adk.db.JDBCConnector;
@@ -13,45 +14,34 @@ import com.adk.db.Person;
 import com.adk.db.pingpong.PlayerDetails;
 import com.adk.db.pingpong.PlayerDetailsHome;
 
-@Path("/foo")
+@Path("/player")
 public class PlayerDetailsService {
 
 	@GET
-	@Path("/person")
-	@Produces("application/json")
-	public Person getPersonId(){
-		JDBCConnector jdbc = new JDBCConnector();
-		Person p = jdbc.getPerson();
-//		Person p = dao.findById(1);
-
-		return p;
+	@Path("/get/{id}")
+	@Produces({"application/xml", "application/json"})
+	public PlayerDetails getPlayerById(@PathParam("id") String id){
+		PlayerDetailsHome dao = new PlayerDetailsHome();
+		return dao.findById(Integer.parseInt(id));
 	}
 	
 	public static void main(String[] args){
 		PlayerDetailsHome dao = new PlayerDetailsHome();
-//		PlayerDetails search = new PlayerDetails();
-////		search.setPlayerName("Dinesh Krishnan");
-//		search.setAge(29);
-//		List result = dao.findByExample(search);
-//		Iterator itr = result.iterator();
-//		
-//		while (itr.hasNext()) {
-//			Object object = (Object) itr.next();
-//			System.out.println(object.toString());
-//		}
-		
+//		getPlayerById(dao);
+		persistNewPlayer(dao);
+		//persistNewPlayer(dao);
+	}
+
+	private static void getPlayerById(PlayerDetailsHome dao) {
 		PlayerDetails pd = dao.findById(1);
 		
 		System.out.println(pd.toString());
-		
-		//persistNewPlayer(dao);
-		
 	}
 
 	private static void persistNewPlayer(PlayerDetailsHome dao) {
 		PlayerDetails pojo = new PlayerDetails();
 		pojo.setAddress("25, Krishna Nagar, Peelemedu, Coimbatore");
-		pojo.setAge(29);
+		pojo.setAge(9);
 		Calendar cal = Calendar.getInstance();
 		cal.set(1988, 03, 18);
 		pojo.setDob(cal.getTime());
@@ -64,7 +54,7 @@ public class PlayerDetailsService {
 		pojo.setMobileNumber("9176158249");
 		pojo.setMotherName("Rajeswari");
 		pojo.setOccupation("Software Engineer");
-		pojo.setPlayerName("Dinesh Krishnan");
+		pojo.setPlayerName("Krishnan");
 //		pojo.setPlayerScoreDetailses(playerScoreDetailses);
 		
 		dao.persist(pojo );
