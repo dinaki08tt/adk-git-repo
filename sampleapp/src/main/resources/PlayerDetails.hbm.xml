@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 1, 2016 12:08:39 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.adk.db.pingpong.PlayerDetails" table="player_details" optimistic-lock="version">
+        <id name="playerId" type="java.lang.Integer">
+            <column name="Player_id" />
+            <generator class="identity" />
+        </id>
+        <property name="playerName" type="string">
+            <column name="Player_Name" length="30" not-null="true" />
+        </property>
+        <property name="fatherName" type="string">
+            <column name="Father_name" length="30" not-null="true" />
+        </property>
+        <property name="motherName" type="string">
+            <column name="mother_name" length="30" not-null="true" />
+        </property>
+        <property name="occupation" type="string">
+            <column name="Occupation" length="30" not-null="true" />
+        </property>
+        <property name="dob" type="date">
+            <column name="DOB" length="10" not-null="true" />
+        </property>
+        <property name="dateOfJoining" type="date">
+            <column name="Date_Of_Joining" length="10" not-null="true" />
+        </property>
+        <property name="mobileNumber" type="string">
+            <column name="Mobile_number" length="15" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="Address" length="100" not-null="true" />
+        </property>
+        <property name="age" type="int">
+            <column name="Age" not-null="true" />
+        </property>
+        <property name="isParentPlayer" type="byte">
+            <column name="is_parent_player" not-null="true" />
+        </property>
+        <property name="isParentWillingToLearn" type="byte">
+            <column name="is_parent_willing_to_learn" not-null="true" />
+        </property>
+        <property name="isParentRefere" type="byte">
+            <column name="is_parent_refere" not-null="true" />
+        </property>
+        <set name="playerScoreDetailses" table="player_score_details" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="player_id" not-null="true" />
+            </key>
+            <one-to-many class="com.adk.db.pingpong.PlayerScoreDetails" />
+        </set>
+    </class>
+</hibernate-mapping>

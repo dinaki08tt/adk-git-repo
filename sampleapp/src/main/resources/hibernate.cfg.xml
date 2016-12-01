@@ -15,5 +15,15 @@
 <!--         <property name="hibernate.hbm2ddl.auto">create</property> -->
 <mapping class="com.adk.db.Person"/>
 <mapping resource="Person.hbm.xml"/>
-    </session-factory>
+
+<mapping class="com.adk.db.pingpong.PlayerDetails"/>
+<mapping resource="PlayerDetails.hbm.xml"/>
+
+<mapping class="com.adk.db.pingpong.PlayerScoreDetails"/>
+<mapping resource="PlayerScoreDetails.hbm.xml"/>
+
+<mapping class="com.adk.db.pingpong.MatchScoreDetails"/>
+<mapping resource="MatchScoreDetails.hbm.xml"/>
+
+</session-factory>
 </hibernate-configuration>
