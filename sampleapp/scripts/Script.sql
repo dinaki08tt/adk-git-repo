@@ -42,30 +42,54 @@ CREATE TABLE `Player_details` (
                 PRIMARY KEY (`Player_id`)
 );
 
-CREATE TABLE `Player_score_details` (
-                `row_id` int NOT NULL AUTO_INCREMENT,
+
+CREATE TABLE `Group_Matches_details` (
+				`Group_id` int NOT NULL AUTO_INCREMENT,
+				`Group_Name` varchar(100),
+				`Match_id` int NOT NULL,
+                `Match_date` DATE NOT NULL,
+                `Player1_id` INT NOT NULL,
+                `Player2_id` INT NOT NULL,
+                `Player1_Score` INT,
+                `Player2_Score` INT,
+                `Winner` varchar(100),
+                PRIMARY KEY (`Group_id`)
+);
+
+drop table `game_score`
+
+create table `game_score`(
+	`group_id` int NOT NULL,
+	`match_id` int NOT NULL AUTO_INCREMENT,
+	`game_id` int,
+	`player_1_id` int NOT NULL,
+	`player_2_id` int NOT NULL,
+	`player_1_score` int,
+	`player_2_score` int,	
+	 PRIMARY KEY (`match_id`)
+);
+
+
+ALTER TABLE `game_score` ADD CONSTRAINT `game_score_fk0` FOREIGN KEY (`player_1_id`) REFERENCES `Player_details`(`Player_id`);
+ALTER TABLE `game_score` DROP FOREIGN KEY `game_score_fk0`;
+ALTER TABLE `game_score` ADD CONSTRAINT `game_score_fk1` FOREIGN KEY (`player_2_id`) REFERENCES `Player_details`(`Player_id`);
+ALTER TABLE `game_score` DROP FOREIGN KEY `game_score_fk1`;
+ALTER TABLE `game_score` ADD CONSTRAINT `game_score_fk2` FOREIGN KEY (`group_id`) REFERENCES `Group_Matches_details`(`Group_id`);
+ALTER TABLE `game_score` DROP FOREIGN KEY `game_score_fk2`;
+CREATE TABLE `score_card` (
+                `score_id` int NOT NULL AUTO_INCREMENT,
                 `player_id` int  NOT NULL,
                 `Match_id` INT NOT NULL,
                 `Match_date` DATE NOT NULL,
                 `Score` INT NOT NULL,
                 `Bonus` INT NOT NULL,
                 `Total_Score` INT NOT NULL,
-                PRIMARY KEY (`row_id`)
+                PRIMARY KEY (`score_id`)
 );
 
-CREATE TABLE `Match_Score_details` (
-                `Match_id` int NOT NULL AUTO_INCREMENT,
-                `Match_date` DATE NOT NULL,
-                `Player1_id` INT NOT NULL,
-                `Player2_id` INT NOT NULL,
-                `Result_1` varchar(100) NOT NULL,
-                PRIMARY KEY (`Match_id`)
-);
+ALTER TABLE `score_card` ADD CONSTRAINT `score_card_fk0` FOREIGN KEY (`player_id`) REFERENCES `Player_details`(`Player_id`);
 
-ALTER TABLE `Player_score_details` ADD CONSTRAINT `Player_score_details_fk0` FOREIGN KEY (`player_id`) REFERENCES `Player_details`(`Player_id`);
-ALTER TABLE `Player_score_details` DROP FOREIGN KEY `Player_score_details_fk0`
-ALTER TABLE `Player_score_details` ADD CONSTRAINT `Player_score_details_fk1` FOREIGN KEY (`Match_id`) REFERENCES `Match_Score_details`(`Match_id`);
-ALTER TABLE `Player_score_details` DROP FOREIGN KEY `Player_score_details_fk1`
-
+ALTER TABLE `score_card` ADD CONSTRAINT `score_card_fk1` FOREIGN KEY (`Match_id`) REFERENCES `game_score`(`match_id`);
+ALTER TABLE `score_card` DROP FOREIGN KEY `score_card_fk1`;
 
 
