@@ -2,7 +2,23 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-catalog="tempdb" match-name="match_score_details"/>
-  <table-filter match-catalog="tempdb" match-name="player_details"/>
-  <table-filter match-catalog="tempdb" match-name="player_score_details"/>
+	<type-mapping>
+		<sql-type jdbc-type="TINYINT" hibernate-type="boolean"
+			not-null="true">
+		</sql-type>
+		<sql-type jdbc-type="TINYINT" hibernate-type="boolean"
+			not-null="true">
+		</sql-type>
+		<sql-type jdbc-type="TINYINT" hibernate-type="boolean"
+			not-null="true">
+		</sql-type>
+	</type-mapping>
+	<table-filter match-name="score_card" match-catalog="tempdb"></table-filter>
+	<table-filter match-name="group_matches_details"
+		match-catalog="tempdb">
+	</table-filter>
+	<table-filter match-name="game_score" match-catalog="tempdb"></table-filter>
+	<table-filter match-name="player_details" match-catalog="tempdb"></table-filter>
+	<table-filter match-name="tournament" match-catalog="tempdb"></table-filter>
+	<table-filter match-name="category" match-catalog="tempdb"></table-filter>
 </hibernate-reverse-engineering>

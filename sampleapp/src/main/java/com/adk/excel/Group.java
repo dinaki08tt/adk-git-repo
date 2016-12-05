@@ -4,14 +4,16 @@ import java.util.List;
 
 public class Group {
 
-	private List<Player> players;
+	private List<Entry> entries;
 	private String groupName;
 	private Integer groupNumber;
-	public List<Player> getPlayers() {
-		return players;
+
+	
+	public List<Entry> getEntries() {
+		return entries;
 	}
-	public void setPlayers(List<Player> players) {
-		this.players = players;
+	public void setEntries(List<Entry> entries) {
+		this.entries = entries;
 	}
 	public String getGroupName() {
 		return groupName;
@@ -27,8 +29,7 @@ public class Group {
 	}
 	@Override
 	public String toString() {
-		return "Group [players=" + players + ", groupName=" + groupName + ", groupNumber=" + groupNumber + "] \n";
+		return "Group [entries=" + entries + ", groupName=" + groupName + ", groupNumber=" + groupNumber + "]";
 	}
-
 	
 }

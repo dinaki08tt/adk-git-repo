@@ -1,5 +1,5 @@
 package com.adk.db.pingpong;
-// Generated Dec 1, 2016 12:08:39 PM by Hibernate Tools 4.3.1.Final
+// Generated Dec 5, 2016 11:24:39 AM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -23,17 +23,20 @@ public class PlayerDetails implements java.io.Serializable {
 	private String mobileNumber;
 	private String address;
 	private int age;
-	private byte isParentPlayer;
-	private byte isParentWillingToLearn;
-	private byte isParentRefere;
-	private Set playerScoreDetailses = new HashSet(0);
+	private boolean isParentPlayer;
+	private boolean isParentWillingToLearn;
+	private boolean isParentRefere;
+	private String playerCode;
+	private Set gameScoresForPlayer2Id = new HashSet(0);
+	private Set scoreCards = new HashSet(0);
+	private Set gameScoresForPlayer1Id = new HashSet(0);
 
 	public PlayerDetails() {
 	}
 
 	public PlayerDetails(String playerName, String fatherName, String motherName, String occupation, Date dob,
-			Date dateOfJoining, String mobileNumber, String address, int age, byte isParentPlayer,
-			byte isParentWillingToLearn, byte isParentRefere) {
+			Date dateOfJoining, String mobileNumber, String address, int age, boolean isParentPlayer,
+			boolean isParentWillingToLearn, boolean isParentRefere) {
 		this.playerName = playerName;
 		this.fatherName = fatherName;
 		this.motherName = motherName;
@@ -49,8 +52,9 @@ public class PlayerDetails implements java.io.Serializable {
 	}
 
 	public PlayerDetails(String playerName, String fatherName, String motherName, String occupation, Date dob,
-			Date dateOfJoining, String mobileNumber, String address, int age, byte isParentPlayer,
-			byte isParentWillingToLearn, byte isParentRefere, Set playerScoreDetailses) {
+			Date dateOfJoining, String mobileNumber, String address, int age, boolean isParentPlayer,
+			boolean isParentWillingToLearn, boolean isParentRefere, String playerCode, Set gameScoresForPlayer2Id,
+			Set scoreCards, Set gameScoresForPlayer1Id) {
 		this.playerName = playerName;
 		this.fatherName = fatherName;
 		this.motherName = motherName;
@@ -63,7 +67,10 @@ public class PlayerDetails implements java.io.Serializable {
 		this.isParentPlayer = isParentPlayer;
 		this.isParentWillingToLearn = isParentWillingToLearn;
 		this.isParentRefere = isParentRefere;
-		this.playerScoreDetailses = playerScoreDetailses;
+		this.playerCode = playerCode;
+		this.gameScoresForPlayer2Id = gameScoresForPlayer2Id;
+		this.scoreCards = scoreCards;
+		this.gameScoresForPlayer1Id = gameScoresForPlayer1Id;
 	}
 
 	public Integer getPlayerId() {
@@ -146,137 +153,60 @@ public class PlayerDetails implements java.io.Serializable {
 		this.age = age;
 	}
 
-	public byte getIsParentPlayer() {
+	public boolean isIsParentPlayer() {
 		return this.isParentPlayer;
 	}
 
-	public void setIsParentPlayer(byte isParentPlayer) {
+	public void setIsParentPlayer(boolean isParentPlayer) {
 		this.isParentPlayer = isParentPlayer;
 	}
 
-	public byte getIsParentWillingToLearn() {
+	public boolean isIsParentWillingToLearn() {
 		return this.isParentWillingToLearn;
 	}
 
-	public void setIsParentWillingToLearn(byte isParentWillingToLearn) {
+	public void setIsParentWillingToLearn(boolean isParentWillingToLearn) {
 		this.isParentWillingToLearn = isParentWillingToLearn;
 	}
 
-	public byte getIsParentRefere() {
+	public boolean isIsParentRefere() {
 		return this.isParentRefere;
 	}
 
-	public void setIsParentRefere(byte isParentRefere) {
+	public void setIsParentRefere(boolean isParentRefere) {
 		this.isParentRefere = isParentRefere;
 	}
 
-	public Set getPlayerScoreDetailses() {
-		return this.playerScoreDetailses;
+	public String getPlayerCode() {
+		return this.playerCode;
 	}
 
-	public void setPlayerScoreDetailses(Set playerScoreDetailses) {
-		this.playerScoreDetailses = playerScoreDetailses;
+	public void setPlayerCode(String playerCode) {
+		this.playerCode = playerCode;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + age;
-		result = prime * result + ((dateOfJoining == null) ? 0 : dateOfJoining.hashCode());
-		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
-		result = prime * result + ((fatherName == null) ? 0 : fatherName.hashCode());
-		result = prime * result + isParentPlayer;
-		result = prime * result + isParentRefere;
-		result = prime * result + isParentWillingToLearn;
-		result = prime * result + ((mobileNumber == null) ? 0 : mobileNumber.hashCode());
-		result = prime * result + ((motherName == null) ? 0 : motherName.hashCode());
-		result = prime * result + ((occupation == null) ? 0 : occupation.hashCode());
-		result = prime * result + ((playerId == null) ? 0 : playerId.hashCode());
-		result = prime * result + ((playerName == null) ? 0 : playerName.hashCode());
-		result = prime * result + ((playerScoreDetailses == null) ? 0 : playerScoreDetailses.hashCode());
-		return result;
+	public Set getGameScoresForPlayer2Id() {
+		return this.gameScoresForPlayer2Id;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PlayerDetails other = (PlayerDetails) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (age != other.age)
-			return false;
-		if (dateOfJoining == null) {
-			if (other.dateOfJoining != null)
-				return false;
-		} else if (!dateOfJoining.equals(other.dateOfJoining))
-			return false;
-		if (dob == null) {
-			if (other.dob != null)
-				return false;
-		} else if (!dob.equals(other.dob))
-			return false;
-		if (fatherName == null) {
-			if (other.fatherName != null)
-				return false;
-		} else if (!fatherName.equals(other.fatherName))
-			return false;
-		if (isParentPlayer != other.isParentPlayer)
-			return false;
-		if (isParentRefere != other.isParentRefere)
-			return false;
-		if (isParentWillingToLearn != other.isParentWillingToLearn)
-			return false;
-		if (mobileNumber == null) {
-			if (other.mobileNumber != null)
-				return false;
-		} else if (!mobileNumber.equals(other.mobileNumber))
-			return false;
-		if (motherName == null) {
-			if (other.motherName != null)
-				return false;
-		} else if (!motherName.equals(other.motherName))
-			return false;
-		if (occupation == null) {
-			if (other.occupation != null)
-				return false;
-		} else if (!occupation.equals(other.occupation))
-			return false;
-		if (playerId == null) {
-			if (other.playerId != null)
-				return false;
-		} else if (!playerId.equals(other.playerId))
-			return false;
-		if (playerName == null) {
-			if (other.playerName != null)
-				return false;
-		} else if (!playerName.equals(other.playerName))
-			return false;
-		if (playerScoreDetailses == null) {
-			if (other.playerScoreDetailses != null)
-				return false;
-		} else if (!playerScoreDetailses.equals(other.playerScoreDetailses))
-			return false;
-		return true;
+	public void setGameScoresForPlayer2Id(Set gameScoresForPlayer2Id) {
+		this.gameScoresForPlayer2Id = gameScoresForPlayer2Id;
 	}
 
-	@Override
-	public String toString() {
-		return "PlayerDetails [playerId=" + playerId + ", playerName=" + playerName + ", fatherName=" + fatherName
-				+ ", motherName=" + motherName + ", occupation=" + occupation + ", dob=" + dob + ", dateOfJoining="
-				+ dateOfJoining + ", mobileNumber=" + mobileNumber + ", address=" + address + ", age=" + age
-				+ ", isParentPlayer=" + isParentPlayer + ", isParentWillingToLearn=" + isParentWillingToLearn
-				+ ", isParentRefere=" + isParentRefere + ", playerScoreDetailses=" + playerScoreDetailses + "]";
+	public Set getScoreCards() {
+		return this.scoreCards;
 	}
 
-	
+	public void setScoreCards(Set scoreCards) {
+		this.scoreCards = scoreCards;
+	}
+
+	public Set getGameScoresForPlayer1Id() {
+		return this.gameScoresForPlayer1Id;
+	}
+
+	public void setGameScoresForPlayer1Id(Set gameScoresForPlayer1Id) {
+		this.gameScoresForPlayer1Id = gameScoresForPlayer1Id;
+	}
+
 }

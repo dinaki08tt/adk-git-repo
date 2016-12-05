@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Dec 1, 2016 12:08:39 PM by Hibernate Tools 4.3.1.Final -->
+<!-- Generated Dec 5, 2016 11:24:39 AM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.adk.db.pingpong.PlayerDetails" table="player_details" optimistic-lock="version">
         <id name="playerId" type="java.lang.Integer">
@@ -35,20 +35,35 @@
         <property name="age" type="int">
             <column name="Age" not-null="true" />
         </property>
-        <property name="isParentPlayer" type="byte">
+        <property name="isParentPlayer" type="boolean">
             <column name="is_parent_player" not-null="true" />
         </property>
-        <property name="isParentWillingToLearn" type="byte">
+        <property name="isParentWillingToLearn" type="boolean">
             <column name="is_parent_willing_to_learn" not-null="true" />
         </property>
-        <property name="isParentRefere" type="byte">
+        <property name="isParentRefere" type="boolean">
             <column name="is_parent_refere" not-null="true" />
         </property>
-        <set name="playerScoreDetailses" table="player_score_details" inverse="true" lazy="false" fetch="select">
+        <property name="playerCode" type="string">
+            <column name="player_code" length="30" unique="true" />
+        </property>
+        <set name="gameScoresForPlayer2Id" table="game_score" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="player_2_id" not-null="true" />
+            </key>
+            <one-to-many class="com.adk.db.pingpong.GameScore" />
+        </set>
+        <set name="scoreCards" table="score_card" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="player_id" not-null="true" />
             </key>
-            <one-to-many class="com.adk.db.pingpong.PlayerScoreDetails" />
+            <one-to-many class="com.adk.db.pingpong.ScoreCard" />
+        </set>
+        <set name="gameScoresForPlayer1Id" table="game_score" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="player_1_id" not-null="true" />
+            </key>
+            <one-to-many class="com.adk.db.pingpong.GameScore" />
         </set>
     </class>
 </hibernate-mapping>

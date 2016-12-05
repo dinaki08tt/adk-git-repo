@@ -40,23 +40,22 @@ public class PlayerDetailsService {
 
 	private static void persistNewPlayer(PlayerDetailsHome dao) {
 		PlayerDetails pojo = new PlayerDetails();
-		pojo.setAddress("25, Krishna Nagar, Peelemedu, Coimbatore");
+		pojo.setAddress("Krishna Nagar, Peelemedu, Coimbatore");
 		pojo.setAge(9);
 		Calendar cal = Calendar.getInstance();
 		cal.set(1988, 03, 18);
 		pojo.setDob(cal.getTime());
 		cal.set(2016, 11, 30);
 		pojo.setDateOfJoining(cal.getTime());
-		pojo.setFatherName("Arumugam");
-		pojo.setIsParentPlayer((byte) 0);
-		pojo.setIsParentRefere((byte) 0);
-		pojo.setIsParentWillingToLearn((byte) 1);
+		pojo.setFatherName("Chetty");
+		pojo.setIsParentPlayer(true);
+		pojo.setIsParentRefere(true);
+		pojo.setIsParentWillingToLearn(true);
 		pojo.setMobileNumber("9176158249");
 		pojo.setMotherName("Rajeswari");
 		pojo.setOccupation("Software Engineer");
-		pojo.setPlayerName("Krishnan");
-//		pojo.setPlayerScoreDetailses(playerScoreDetailses);
-		
+		pojo.setPlayerName("Krishna Kumar");
 		dao.persist(pojo );
 	}
+	
 }

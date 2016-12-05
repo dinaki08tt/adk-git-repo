@@ -19,11 +19,22 @@
 <mapping class="com.adk.db.pingpong.PlayerDetails"/>
 <mapping resource="PlayerDetails.hbm.xml"/>
 
-<mapping class="com.adk.db.pingpong.PlayerScoreDetails"/>
-<mapping resource="PlayerScoreDetails.hbm.xml"/>
+<mapping class="com.adk.db.pingpong.GameScore"/>
+<mapping resource="GameScore.hbm.xml"/>
 
-<mapping class="com.adk.db.pingpong.MatchScoreDetails"/>
-<mapping resource="MatchScoreDetails.hbm.xml"/>
+<mapping class="com.adk.db.pingpong.GroupMatchesDetails"/>
+<mapping resource="GroupMatchesDetails.hbm.xml"/>
+
+<mapping class="com.adk.db.pingpong.ScoreCard"/>
+<mapping resource="ScoreCard.hbm.xml"/>
+
+<mapping class="com.adk.db.pingpong.Tournament"/>
+<mapping resource="Tournament.hbm.xml"/>
+
+
+<mapping class="com.adk.db.pingpong.Category"/>
+<mapping resource="Tournament.hbm.xml"/>
+
 
 </session-factory>
 </hibernate-configuration>

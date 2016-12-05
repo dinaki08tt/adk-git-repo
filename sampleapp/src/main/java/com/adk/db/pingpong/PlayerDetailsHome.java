@@ -1,15 +1,18 @@
 package com.adk.db.pingpong;
-// Generated Dec 1, 2016 12:08:39 PM by Hibernate Tools 4.3.1.Final
+// Generated Dec 5, 2016 10:30:32 AM by Hibernate Tools 4.3.1.Final
 
 import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 
 import com.adk.db.util.SessionFactoryHelper;
 
@@ -36,11 +39,12 @@ public class PlayerDetailsHome {
 	public void persist(PlayerDetails transientInstance) {
 		log.debug("persisting PlayerDetails instance");
 		try {
-			Session session = sessionFactory.getCurrentSession();
-			Transaction tx = session.beginTransaction();
-			session.persist(transientInstance);
-			tx.commit();
+			Session s = sessionFactory.getCurrentSession(); 
+			Transaction tx = s.beginTransaction();
+			s.persist(transientInstance);
 			log.debug("persist successful");
+			tx.commit();
+			
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
 			throw re;
@@ -98,13 +102,12 @@ public class PlayerDetailsHome {
 			Session s = sessionFactory.getCurrentSession();
 			Transaction tx = s.beginTransaction();
 			PlayerDetails instance = (PlayerDetails) s.get("com.adk.db.pingpong.PlayerDetails", id);
-
-			tx.commit();
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
 				log.debug("get successful, instance found");
 			}
+			tx.commit();
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -115,16 +118,29 @@ public class PlayerDetailsHome {
 	public List findByExample(PlayerDetails instance) {
 		log.debug("finding PlayerDetails instance by example");
 		try {
-			Session s = sessionFactory.getCurrentSession();
-			Transaction tx = s.beginTransaction();
-			List results = s.createCriteria("com.adk.db.pingpong.PlayerDetails")
+			List results = sessionFactory.getCurrentSession().createCriteria("com.adk.db.pingpong.PlayerDetails")
 					.add(Example.create(instance)).list();
-			tx.commit();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
 			throw re;
 		}
+	}
+
+	public PlayerDetails findByPlayerCode(String playerCode) {
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Criteria cr = s.createCriteria(PlayerDetails.class);
+		cr.add(Restrictions.like("playerCode", playerCode+"%"));
+		List list = cr.list();
+		PlayerDetails p = null;
+		if(list != null && list.size()>0){
+			p = (PlayerDetails) list.get(0);
+		}else{
+			throw new IllegalStateException("No Records found for playerCode = "+ playerCode);
+		}
+		tx.commit();
+		return p;
 	}
 }
