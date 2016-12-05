@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 10:30:31 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.adk.db.pingpong.GameScore" table="game_score" optimistic-lock="version">
+        <id name="matchId" type="java.lang.Integer">
+            <column name="match_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="groupMatchesDetails" class="com.adk.db.pingpong.GroupMatchesDetails" fetch="select">
+            <column name="group_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="playerDetailsByPlayer2Id" class="com.adk.db.pingpong.PlayerDetails" fetch="select">
+            <column name="player_2_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="playerDetailsByPlayer1Id" class="com.adk.db.pingpong.PlayerDetails" fetch="select">
+            <column name="player_1_id" not-null="true" />
+        </many-to-one>
+        <property name="gameId" type="java.lang.Integer">
+            <column name="game_id" />
+        </property>
+        <property name="player1Score" type="java.lang.Integer">
+            <column name="player_1_score" />
+        </property>
+        <property name="player2Score" type="java.lang.Integer">
+            <column name="player_2_score" />
+        </property>
+        <set name="scoreCards" table="score_card" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Match_id" not-null="true" />
+            </key>
+            <one-to-many class="com.adk.db.pingpong.ScoreCard" />
+        </set>
+    </class>
+</hibernate-mapping>

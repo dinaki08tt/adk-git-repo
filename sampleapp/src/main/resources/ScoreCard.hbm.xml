@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 10:30:31 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.adk.db.pingpong.ScoreCard" table="score_card" optimistic-lock="version">
+        <id name="scoreId" type="java.lang.Integer">
+            <column name="score_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="gameScore" class="com.adk.db.pingpong.GameScore" fetch="select">
+            <column name="Match_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="playerDetails" class="com.adk.db.pingpong.PlayerDetails" fetch="select">
+            <column name="player_id" not-null="true" />
+        </many-to-one>
+        <property name="matchDate" type="date">
+            <column name="Match_date" length="10" not-null="true" />
+        </property>
+        <property name="score" type="int">
+            <column name="Score" not-null="true" />
+        </property>
+        <property name="bonus" type="int">
+            <column name="Bonus" not-null="true" />
+        </property>
+        <property name="totalScore" type="int">
+            <column name="Total_Score" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

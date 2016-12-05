@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 11:55:23 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.adk.db.pingpong.GroupMatchesDetails" table="group_matches_details" optimistic-lock="version">
+        <id name="groupId" type="java.lang.Integer">
+            <column name="Group_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tournament" class="com.adk.db.pingpong.Tournament" fetch="select">
+            <column name="tournament_id" not-null="true" />
+        </many-to-one>
+        <property name="groupName" type="string">
+            <column name="Group_Name" length="100" />
+        </property>
+        <property name="matchId" type="int">
+            <column name="Match_id" not-null="true" />
+        </property>
+        <property name="matchDate" type="date">
+            <column name="Match_date" length="10" not-null="true" />
+        </property>
+        <property name="player1Id" type="int">
+            <column name="Player1_id" not-null="true" />
+        </property>
+        <property name="player2Id" type="int">
+            <column name="Player2_id" not-null="true" />
+        </property>
+        <property name="player1Score" type="java.lang.Integer">
+            <column name="Player1_Score" />
+        </property>
+        <property name="player2Score" type="java.lang.Integer">
+            <column name="Player2_Score" />
+        </property>
+        <property name="winner" type="string">
+            <column name="Winner" length="100" />
+        </property>
+        <set name="gameScores" table="game_score" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="group_id" not-null="true" />
+            </key>
+            <one-to-many class="com.adk.db.pingpong.GameScore" />
+        </set>
+    </class>
+</hibernate-mapping>

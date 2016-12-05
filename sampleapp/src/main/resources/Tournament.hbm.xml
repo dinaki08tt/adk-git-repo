@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2016 11:55:23 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.adk.db.pingpong.Tournament" table="tournament" optimistic-lock="version">
+        <id name="tourId" type="java.lang.Integer">
+            <column name="tour_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="com.adk.db.pingpong.Category" fetch="select">
+            <column name="category_id" not-null="true" />
+        </many-to-one>
+        <property name="tourName" type="string">
+            <column name="tour_name" length="100" />
+        </property>
+        <property name="venue" type="string">
+            <column name="venue" length="200" />
+        </property>
+        <property name="organizer" type="string">
+            <column name="organizer" length="100" />
+        </property>
+        <set name="groupMatchesDetailses" table="group_matches_details" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="tournament_id" not-null="true" />
+            </key>
+            <one-to-many class="com.adk.db.pingpong.GroupMatchesDetails" />
+        </set>
+    </class>
+</hibernate-mapping>
