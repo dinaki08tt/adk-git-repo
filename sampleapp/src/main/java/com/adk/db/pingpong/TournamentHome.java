@@ -97,7 +97,7 @@ public class TournamentHome {
 	public Tournament findById(java.lang.Integer id) {
 		log.debug("getting Tournament instance with id: " + id);
 		try {
-			Session s = sessionFactory.getCurrentSession();
+			Session s = sessionFactory.openSession();
 			Transaction tx = s.beginTransaction();
 			Tournament instance = (Tournament) s.get("com.adk.db.pingpong.Tournament",
 					id);

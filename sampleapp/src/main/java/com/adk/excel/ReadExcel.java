@@ -3,6 +3,7 @@ package com.adk.excel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,11 +52,9 @@ public class ReadExcel
 	}
 	
 	public static List<Player> readPlayerList() throws IOException{
-	File excel = new File("D:\\221013\\eclipse_wkspc\\git_local_repo\\adk-git-repo\\sampleapp\\src\\main\\resources\\player_entry.xlsx");
 			
-		FileInputStream inputStream = null;
-		inputStream = new FileInputStream(excel);
-         
+		InputStream inputStream = null;
+        inputStream = ReadExcel.class.getClassLoader().getResourceAsStream("player_entry.xlsx"); 
         Workbook workbook = new XSSFWorkbook(inputStream);
         Sheet firstSheet = workbook.getSheetAt(0);
         Iterator<Row> iterator = firstSheet.iterator();
@@ -125,10 +124,10 @@ public class ReadExcel
 	
 
 	public static List<Entry> readEntryList() throws IOException{
-	File excel = new File("D:\\221013\\eclipse_wkspc\\git_local_repo\\adk-git-repo\\sampleapp\\src\\main\\resources\\entry_list.xlsx");
 			
-		FileInputStream inputStream = null;
-		inputStream = new FileInputStream(excel);
+		InputStream inputStream = null;
+		
+		inputStream = ReadExcel.class.getClassLoader().getResourceAsStream("entry_list.xlsx");
          
         Workbook workbook = new XSSFWorkbook(inputStream);
         Sheet firstSheet = workbook.getSheetAt(0);

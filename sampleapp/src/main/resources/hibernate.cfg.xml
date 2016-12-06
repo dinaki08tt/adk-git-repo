@@ -33,7 +33,7 @@
 
 
 <mapping class="com.adk.db.pingpong.Category"/>
-<mapping resource="Tournament.hbm.xml"/>
+<mapping resource="Category.hbm.xml"/>
 
 
 </session-factory>
