@@ -8,9 +8,6 @@
             <column name="tour_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="category" class="com.adk.db.pingpong.Category" fetch="select">
-            <column name="category_id" not-null="true" />
-        </many-to-one>
         <property name="tourName" type="string">
             <column name="tour_name" length="100" />
         </property>
@@ -20,7 +17,13 @@
         <property name="organizer" type="string">
             <column name="organizer" length="100" />
         </property>
-        <set name="groupMatchesDetailses" table="group_matches_details" inverse="true" lazy="false" fetch="select">
+        <set name="events" table="event" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tour_id" not-null="true" />
+            </key>
+            <one-to-many class="com.adk.db.pingpong.Event" />
+        </set>
+        <set name="groupMatchesDetailses" table="group_matches_details" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="tournament_id" not-null="true" />
             </key>

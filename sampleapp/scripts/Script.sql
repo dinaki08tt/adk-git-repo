@@ -24,7 +24,7 @@ ALTER TABLE `Player_details` ADD CONSTRAINT uc_player_code UNIQUE (`player_code`
 ALTER TABLE `Player_details` MODIFY `player_code` varchar(30) NOT NULL;
 
 
-
+--single record is a single match between two players
 CREATE TABLE `Group_Matches_details` (
 				`Group_id` int NOT NULL AUTO_INCREMENT,
 				`Group_Name` varchar(100),
@@ -38,8 +38,10 @@ CREATE TABLE `Group_Matches_details` (
                 PRIMARY KEY (`Group_id`)
 );
 
-ALTER TABLE `Group_Matches_details` ADD `tournament_id` int NOT NULL;
-ALTER TABLE `Group_Matches_details` ADD CONSTRAINT `group_match_tour_fk0` FOREIGN KEY (`tournament_id`) REFERENCES `Tournament`(`tour_id`);
+ALTER TABLE `Group_Matches_details` DROP `tournament_id`;
+
+ALTER TABLE `Group_Matches_details` ADD `event_id` int NOT NULL;
+ALTER TABLE `Group_Matches_details` ADD CONSTRAINT `group_match_event_fk0` FOREIGN KEY (`event_id`) REFERENCES `Event`(`event_id`);
 ALTER TABLE `Group_Matches_details` DROP FOREIGN KEY `group_match_tour_fk0`;
 
 drop table `game_score`
@@ -88,16 +90,41 @@ CREATE TABLE `Tournament` (
 				PRIMARY KEY (`tour_id`)
 );
 
-ALTER TABLE `Tournament` ADD `category_id` int NOT NULL;
+ALTER TABLE `Tournament` DROP `category_id`;
+ALTER TABLE `Tournament` ADD `event_id` int NOT NULL;
+ALTER TABLE `Tournament` DROP `event_id`;
 
-ALTER TABLE `Tournament` ADD CONSTRAINT `tour_category_fk0` FOREIGN KEY (`category_id`) REFERENCES `Category`(`category_id`);
-ALTER TABLE `Tournament` DROP FOREIGN KEY `tour_category_fk0`;
+ALTER TABLE `Tournament` ADD CONSTRAINT `tour_event_fk0` FOREIGN KEY (`event_id`) REFERENCES `Event`(`event_id`);
+ALTER TABLE `Tournament` DROP FOREIGN KEY `tour_event_fk0`;
 
 CREATE TABLE `Category` (
 				`category_id` int NOT NULL AUTO_INCREMENT,
 				`category_name` varchar(100),
 				PRIMARY KEY (`category_id`)
 );
+
+ALTER TABLE `Category` ADD `gender` varchar(20) NOT NULL;
+
+ALTER TABLE `Category` ADD `match_type` varchar(20) NOT NULL;
+
+CREATE TABLE `Event` (
+				`event_id` int NOT NULL AUTO_INCREMENT,
+				`event_name` varchar(100),
+				`category_id` int NOT NULL,
+				PRIMARY KEY (`event_id`)
+);
+
+
+ALTER TABLE `Event` ADD `tour_id` int NOT NULL;
+
+ALTER TABLE `Event` ADD UNIQUE (`event_name`);
+
+ALTER TABLE `Event` ADD CONSTRAINT `event_tour_fk0` FOREIGN KEY (`tour_id`) REFERENCES `Tournament`(`tour_id`);
+
+ALTER TABLE `Event` ADD CONSTRAINT `event_category_fk0` FOREIGN KEY (`category_id`) REFERENCES `Category`(`category_id`);
+
+ALTER TABLE `Event` DROP PRIMARY KEY, ADD PRIMARY KEY(`event_id`);
+
 
 TRUNCATE TABLE `Tournament`;
 

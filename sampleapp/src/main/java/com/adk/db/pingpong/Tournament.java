@@ -20,26 +20,21 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Tournament implements java.io.Serializable {
 
 	private Integer tourId;
-	@XmlTransient
-	private Category category;
 	private String tourName;
 	private String venue;
 	private String organizer;
+	private Set events = new HashSet(0);
 	@XmlElement(name="groupMatchesDetails")
 	private Set groupMatchesDetailses = new HashSet(0);
 
 	public Tournament() {
 	}
 
-	public Tournament(Category category) {
-		this.category = category;
-	}
-
-	public Tournament(Category category, String tourName, String venue, String organizer, Set groupMatchesDetailses) {
-		this.category = category;
+	public Tournament(String tourName, String venue, String organizer, Set events, Set groupMatchesDetailses) {
 		this.tourName = tourName;
 		this.venue = venue;
 		this.organizer = organizer;
+		this.events = events;
 		this.groupMatchesDetailses = groupMatchesDetailses;
 	}
 
@@ -49,14 +44,6 @@ public class Tournament implements java.io.Serializable {
 
 	public void setTourId(Integer tourId) {
 		this.tourId = tourId;
-	}
-
-	public Category getCategory() {
-		return this.category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 	public String getTourName() {
@@ -73,6 +60,14 @@ public class Tournament implements java.io.Serializable {
 
 	public void setVenue(String venue) {
 		this.venue = venue;
+	}
+
+	public Set getEvents() {
+		return this.events;
+	}
+
+	public void setEvents(Set events) {
+		this.events = events;
 	}
 
 	public String getOrganizer() {

@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.adk.db.pingpong.Category;
 import com.adk.db.pingpong.CategoryHome;
+import com.adk.db.pingpong.Event;
+import com.adk.db.pingpong.EventHome;
 import com.adk.db.pingpong.GroupMatchesDetails;
 import com.adk.db.pingpong.GroupMatchesDetailsHome;
 import com.adk.db.pingpong.PlayerDetails;
@@ -27,11 +29,11 @@ public class LeagueDesigner {
 		List<Group> groups = new ArrayList<Group>();
 		try {
 			List<Entry> all = ReadExcel.readEntryList();
-//			 Collections.sort(all, new Comparator<Player>() {
-//					public int compare(Player o1, Player o2) {
-//						return (o1.getSeeding()).compareTo(o2.getSeeding());
-//					}
-//		        });
+			 Collections.sort(all, new Comparator<Entry>() {
+					public int compare(Entry o1, Entry o2) {
+						return (o1.getSeeding()).compareTo(o2.getSeeding());
+					}
+		        });
 			
 			//get even number group count
 			int playerCount = all.size();
@@ -63,14 +65,14 @@ public class LeagueDesigner {
 		return groups;
 	}  
 	
-	
-	public static void main(String... strings){
-		createTouranment();		
-	}
 
 	
-	public static void main1(String... strings){
+	public static void createGroupMatchForEvent(String eventName){
 
+		EventHome eventDao = new EventHome();
+		Event eventPojo = eventDao.findByName(eventName);
+		
+		
 		Date matchdate = new Date();
 		List<Group> grps = designGroups();
 		PlayerDetailsHome pDao = new PlayerDetailsHome();
@@ -100,7 +102,7 @@ public class LeagueDesigner {
 			GroupMatchesDetails gmd = null;
 			//p1 vs p2
 			gmd = new GroupMatchesDetails();
-			gmd.setTournament(t);
+			gmd.setEvent(eventPojo);
 			gmd.setGroupName(group.getGroupName());
 			gmd.setMatchId(++matchId);
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
@@ -112,7 +114,7 @@ public class LeagueDesigner {
 			//p1 vs p3
 			gmd = new GroupMatchesDetails();
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
-			gmd.setTournament(t);
+			gmd.setEvent(eventPojo);
 			gmd.setGroupName(group.getGroupName());
 			gmd.setMatchId(++matchId);
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
@@ -124,7 +126,7 @@ public class LeagueDesigner {
 			//p1 vs p4
 			gmd = new GroupMatchesDetails();
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
-			gmd.setTournament(t);
+			gmd.setEvent(eventPojo);
 			gmd.setGroupName(group.getGroupName());
 			gmd.setMatchId(++matchId);
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
@@ -136,7 +138,7 @@ public class LeagueDesigner {
 			//p2 vs p3
 			gmd = new GroupMatchesDetails();
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
-			gmd.setTournament(t);
+			gmd.setEvent(eventPojo);
 			gmd.setGroupName(group.getGroupName());
 			gmd.setMatchId(++matchId);
 			pd = pDao.findByPlayerCode(p2.getPlayerCode());
@@ -148,7 +150,7 @@ public class LeagueDesigner {
 			//p2 vs p4
 			gmd = new GroupMatchesDetails();
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
-			gmd.setTournament(t);
+			gmd.setEvent(eventPojo);
 			gmd.setGroupName(group.getGroupName());
 			gmd.setMatchId(++matchId);
 			pd = pDao.findByPlayerCode(p2.getPlayerCode());
@@ -160,7 +162,7 @@ public class LeagueDesigner {
 			//p3 vs p4
 			gmd = new GroupMatchesDetails();
 			pd = pDao.findByPlayerCode(p1.getPlayerCode());
-			gmd.setTournament(t);
+			gmd.setEvent(eventPojo);
 			gmd.setGroupName(group.getGroupName());
 			gmd.setMatchId(++matchId);
 			pd = pDao.findByPlayerCode(p3.getPlayerCode());
@@ -173,24 +175,6 @@ public class LeagueDesigner {
 		}
 	
 	}
-
-
-
-	public static void createTouranment() {
-		Category c = new Category();
-		c.setCategoryName("Sub-Juniors");
-		CategoryHome dao = new CategoryHome();
-		dao.persist(c);
-		TournamentHome dao2 = new TournamentHome();
-		Tournament t = new Tournament();
-		t.setOrganizer("ADkTTA");
-		t.setTourName("Recreational Tour");
-		t.setVenue("ADKTTA");
-		Category cc = dao.findById(1);
-		t.setCategory(cc);
-		dao2.persist(t);
-	}
-
 
 
 	private static int decideGroupCount(int playerCount) {

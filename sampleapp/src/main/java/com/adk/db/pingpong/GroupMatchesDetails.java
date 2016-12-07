@@ -19,10 +19,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class GroupMatchesDetails implements java.io.Serializable {
 
 	private Integer groupId;
-	
-	@XmlTransient
-	private Tournament tournament;
-	
+	private Event event;
 	private String groupName;
 	private int matchId;
 	private Date matchDate;
@@ -36,17 +33,17 @@ public class GroupMatchesDetails implements java.io.Serializable {
 	public GroupMatchesDetails() {
 	}
 
-	public GroupMatchesDetails(Tournament tournament, int matchId, Date matchDate, int player1Id, int player2Id) {
-		this.tournament = tournament;
+	public GroupMatchesDetails(Event event, int matchId, Date matchDate, int player1Id, int player2Id) {
+		this.event = event;
 		this.matchId = matchId;
 		this.matchDate = matchDate;
 		this.player1Id = player1Id;
 		this.player2Id = player2Id;
 	}
 
-	public GroupMatchesDetails(Tournament tournament, String groupName, int matchId, Date matchDate, int player1Id,
-			int player2Id, Integer player1Score, Integer player2Score, String winner, Set gameScores) {
-		this.tournament = tournament;
+	public GroupMatchesDetails(Event event, String groupName, int matchId, Date matchDate, int player1Id, int player2Id,
+			Integer player1Score, Integer player2Score, String winner, Set gameScores) {
+		this.event = event;
 		this.groupName = groupName;
 		this.matchId = matchId;
 		this.matchDate = matchDate;
@@ -66,12 +63,12 @@ public class GroupMatchesDetails implements java.io.Serializable {
 		this.groupId = groupId;
 	}
 
-	public Tournament getTournament() {
-		return this.tournament;
+	public Event getEvent() {
+		return this.event;
 	}
 
-	public void setTournament(Tournament tournament) {
-		this.tournament = tournament;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	public String getGroupName() {

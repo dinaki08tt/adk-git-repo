@@ -1,9 +1,10 @@
 package com.adk.db.pingpong;
-// Generated Dec 5, 2016 3:59:42 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
+// Generated Dec 5, 2016 3:59:42 PM by Hibernate Tools 4.3.1.Final
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -15,16 +16,23 @@ public class Category implements java.io.Serializable {
 	private Integer categoryId;
 	private String categoryName;
 	private String gender;
-	
-	private Set tournaments = new HashSet(0);
+	private String matchType;
+	@XmlElement(name="events")
+	private Set events = new HashSet(0);
 
 	public Category() {
 	}
 
-	public Category(String categoryName, String gender, Set tournaments) {
+	public Category(String gender, String matchType) {
+		this.gender = gender;
+		this.matchType = matchType;
+	}
+
+	public Category(String categoryName, String gender, String matchType, Set events) {
 		this.categoryName = categoryName;
 		this.gender = gender;
-		this.tournaments = tournaments;
+		this.matchType = matchType;
+		this.events = events;
 	}
 
 	public Integer getCategoryId() {
@@ -51,12 +59,20 @@ public class Category implements java.io.Serializable {
 		this.gender = gender;
 	}
 
-	public Set getTournaments() {
-		return this.tournaments;
+	public String getMatchType() {
+		return this.matchType;
 	}
 
-	public void setTournaments(Set tournaments) {
-		this.tournaments = tournaments;
+	public void setMatchType(String matchType) {
+		this.matchType = matchType;
+	}
+
+	public Set getEvents() {
+		return this.events;
+	}
+
+	public void setEvents(Set events) {
+		this.events = events;
 	}
 
 }

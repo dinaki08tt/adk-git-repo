@@ -208,7 +208,7 @@ public static void main(String[] args)
 			
 			group.getPlayer1Id();
 			group.getPlayer2Id();
-			group.getTournament().getCategory().getCategoryName();
+		
 			
 		}
 		

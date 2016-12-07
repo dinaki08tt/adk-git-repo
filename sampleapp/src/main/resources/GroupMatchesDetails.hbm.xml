@@ -8,8 +8,8 @@
             <column name="Group_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="tournament" class="com.adk.db.pingpong.Tournament" fetch="select">
-            <column name="tournament_id" not-null="true" />
+        <many-to-one name="event" class="com.adk.db.pingpong.Event" fetch="select">
+            <column name="event_id" not-null="true" />
         </many-to-one>
         <property name="groupName" type="string">
             <column name="Group_Name" length="100" />

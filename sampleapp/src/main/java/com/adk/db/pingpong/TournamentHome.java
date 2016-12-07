@@ -5,11 +5,13 @@ import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 
 import com.adk.db.util.SessionFactoryHelper;
 
@@ -126,5 +128,21 @@ public class TournamentHome {
 			log.error("find by example failed", re);
 			throw re;
 		}
+	}
+
+	public Tournament findTourByName(String name) {
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Criteria cr = s.createCriteria(Tournament.class);
+		cr.add(Restrictions.like("tourName", name+"%"));
+		List list = cr.list();
+		Tournament t = null;
+		if(list != null && list.size()>0){
+			t = (Tournament) list.get(0);
+		}else{
+			throw new IllegalStateException("No Records found for Tournament Name = "+ name);
+		}
+		tx.commit();
+		return t;
 	}
 }

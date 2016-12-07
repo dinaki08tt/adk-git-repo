@@ -12,13 +12,16 @@
             <column name="category_name" length="100" />
         </property>
         <property name="gender" type="string">
-            <column name="gender" length="100" />
+            <column name="gender" length="20" not-null="true" />
         </property>
-        <set name="tournaments" table="tournament" inverse="true" lazy="true" fetch="select">
+        <property name="matchType" type="string">
+            <column name="match_type" length="20" not-null="true" />
+        </property>
+        <set name="events" table="event" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="category_id" not-null="true" />
             </key>
-            <one-to-many class="com.adk.db.pingpong.Tournament" />
+            <one-to-many class="com.adk.db.pingpong.Event" />
         </set>
     </class>
 </hibernate-mapping>

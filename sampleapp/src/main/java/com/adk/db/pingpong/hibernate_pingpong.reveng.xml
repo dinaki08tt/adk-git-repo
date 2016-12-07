@@ -21,4 +21,5 @@
 	<table-filter match-name="player_details" match-catalog="tempdb"></table-filter>
 	<table-filter match-name="tournament" match-catalog="tempdb"></table-filter>
 	<table-filter match-name="category" match-catalog="tempdb"></table-filter>
+	<table-filter match-name="event" match-catalog="tempdb"></table-filter>
 </hibernate-reverse-engineering>

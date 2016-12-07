@@ -52,6 +52,11 @@ public class ReadExcel
 	    return null;
 	}
 	
+	/**
+	 * New Player Registration
+	 * @return
+	 * @throws IOException
+	 */
 	public static List<Player> readPlayerList() throws IOException{
 
 		InputStream inputStream = null;
@@ -63,7 +68,7 @@ public class ReadExcel
 		File[] files = out.listFiles();
 		
 		for(File f : files){
-			if(f.getName().equalsIgnoreCase("player_entry.xlsx")){
+			if(f.getName().equalsIgnoreCase("new_player_register.xlsx")){
 				inputStream = new FileInputStream(f);
 			}
 		}
@@ -135,7 +140,11 @@ public class ReadExcel
         return listofPlayers;
 	}
 	
-
+	/**
+	 * Entry list for particular event
+	 * @return
+	 * @throws IOException
+	 */
 	public static List<Entry> readEntryList() throws IOException{
 			
 		InputStream inputStream = null;
@@ -154,7 +163,7 @@ public class ReadExcel
         Workbook workbook = new XSSFWorkbook(inputStream);
         Sheet firstSheet = workbook.getSheetAt(0);
         Iterator<Row> iterator = firstSheet.iterator();
-         List<Entry> listofPlayers = new ArrayList<Entry>();
+         List<Entry> listofEntries = new ArrayList<Entry>();
         while (iterator.hasNext()) {
             Row nextRow = iterator.next();
             Iterator<Cell> cellIterator = nextRow.cellIterator();
@@ -176,14 +185,14 @@ public class ReadExcel
                }
      
             }
-            listofPlayers.add(entry);
+            listofEntries.add(entry);
         }
         
         
         inputStream.close();
         inputStream = null;
         
-        return listofPlayers;
+        return listofEntries;
 	}
 	
 	
@@ -221,6 +230,7 @@ public class ReadExcel
 			pd.setIsParentPlayer(player.getIsParentPlayer());
 			pd.setIsParentRefere(player.getIsPlayerReferee());
 			pd.setIsParentWillingToLearn(player.getIsParentWillingLearn());
+			pd.setPlayerCode(player.getPlayerCode());
 			System.out.println("Excel Record :"+player.toString());
 			System.out.println("DB Pojo:"+pd.toString());
 			dao.persist(pd);

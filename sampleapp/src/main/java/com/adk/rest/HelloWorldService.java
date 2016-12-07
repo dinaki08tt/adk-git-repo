@@ -39,12 +39,13 @@ public class HelloWorldService {
 //		calculateBusiness();
 		return p;
 	}
-	
+
+	private static final String str = new String("memoryleak1");
+
 	public void calculateBusiness(){
 		int i = 0;
 		do{
 			i++;
-			String str = new String("memoryleak1");
 			if(i == 0){
 //				System.out.println("i is 0");
 			}

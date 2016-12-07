@@ -35,6 +35,8 @@
 <mapping class="com.adk.db.pingpong.Category"/>
 <mapping resource="Category.hbm.xml"/>
 
+<mapping class="com.adk.db.pingpong.Event"/>
+<mapping resource="Event.hbm.xml"/>
 
 </session-factory>
 </hibernate-configuration>
