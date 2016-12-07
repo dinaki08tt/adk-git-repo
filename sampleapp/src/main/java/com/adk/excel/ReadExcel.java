@@ -24,6 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.adk.db.pingpong.PlayerDetails;
 import com.adk.db.pingpong.PlayerDetailsHome;
+import com.adk.utils.Constants;
 
 public class ReadExcel 
 {
@@ -52,9 +53,21 @@ public class ReadExcel
 	}
 	
 	public static List<Player> readPlayerList() throws IOException{
-			
+
 		InputStream inputStream = null;
-        inputStream = ReadExcel.class.getClassLoader().getResourceAsStream("player_entry.xlsx"); 
+        	
+		File out = null;
+		if(Constants.OUTPUT_DIR.isDirectory()){
+			out = new File(Constants.OUTPUT_DIR, "excel");	
+		}
+		File[] files = out.listFiles();
+		
+		for(File f : files){
+			if(f.getName().equalsIgnoreCase("player_entry.xlsx")){
+				inputStream = new FileInputStream(f);
+			}
+		}
+		
         Workbook workbook = new XSSFWorkbook(inputStream);
         Sheet firstSheet = workbook.getSheetAt(0);
         Iterator<Row> iterator = firstSheet.iterator();
@@ -126,9 +139,18 @@ public class ReadExcel
 	public static List<Entry> readEntryList() throws IOException{
 			
 		InputStream inputStream = null;
+    	
+		File out = null;
+		if(Constants.OUTPUT_DIR.isDirectory()){
+			out = new File(Constants.OUTPUT_DIR, "excel");
+		}
+		File[] files = out.listFiles();
 		
-		inputStream = ReadExcel.class.getClassLoader().getResourceAsStream("entry_list.xlsx");
-         
+		for(File f : files){
+			if(f.getName().equalsIgnoreCase("entry_list.xlsx")){
+				inputStream = new FileInputStream(f);
+			}
+		}
         Workbook workbook = new XSSFWorkbook(inputStream);
         Sheet firstSheet = workbook.getSheetAt(0);
         Iterator<Row> iterator = firstSheet.iterator();

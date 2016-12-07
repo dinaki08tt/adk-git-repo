@@ -21,7 +21,7 @@ public class PlayerDetailsService {
 		return dao.findById(Integer.parseInt(id));
 	}
 	
-	public static void main(String[] args){
+	public static void main1(String[] args){
 		PlayerDetailsHome dao = new PlayerDetailsHome();
 //		getPlayerById(dao);
 		persistNewPlayer(dao);

@@ -1,33 +1,40 @@
 package com.adk.msword;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
 
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
-public class WriteWordFile    {
-	   //Blank Document
+import com.adk.db.pingpong.GroupMatchesDetails;
 
-public static void main(String... args){
+//import org.apache.poi.hwpf.HWPFDocument;
+//import org.apache.poi.hwpf.extractor.WordExtractor;
 
-	   XWPFDocument document= new XWPFDocument();
-       
-	   //Write the Document in file system
-	   URL url = WriteWordFile.class.getClassLoader().getResource("score_sheet.docx");
-	   
-	   File word = new File(url.getPath());
+import com.adk.utils.Constants;
 
-	   FileOutputStream out = null;
+public class WriteWordFile {
+
+public static void main1(String... args){
+
+	FileOutputStream out = null;
 	try {
-		out = new FileOutputStream(word);
-	    
+		
+	out = getFileOutputStream();
+	
+	
+	   XWPFDocument document= new XWPFDocument();
+        
 		 XWPFParagraph title = document.createParagraph();
 		 XWPFRun run= title.createRun();
 		 run.setText("ADK Table Tennis Academy");
@@ -96,5 +103,125 @@ public static void main(String... args){
 	}
 	
 }
+
+public static FileOutputStream getFileOutputStream() throws FileNotFoundException {
+	FileOutputStream out = null;
+	File msword = null;
+	if(Constants.OUTPUT_DIR.isDirectory()){
+		msword = new File(Constants.OUTPUT_DIR, "msword");
+	}
+	File[] files = msword.listFiles();
+	
+	for(File f : files){
+		if(f.getName().equalsIgnoreCase("score_sheet.docx")){
+			
+			f.delete();
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			out = new FileOutputStream(f);
+		}
+	}
+	return out;
+}
+
+public static FileInputStream getFileInputStream() throws FileNotFoundException {
+	InputStream in = null;
+	File msword = null;
+	if(Constants.OUTPUT_DIR.isDirectory()){
+		msword = new File(Constants.OUTPUT_DIR, "msword");
+	}
+	File[] files = msword.listFiles();
+	
+	for(File f : files){
+		if(f.getName().equalsIgnoreCase("score_sheet_template.docx")){
+			in = new FileInputStream(f);
+		}
+	}
+	return (FileInputStream) in;
+}
+
+public static void main(String[] args)
+{
+	 XWPFWordExtractor we = null;
+	  
+    try
+    {
+    	XWPFDocument docx = new XWPFDocument(getFileInputStream());
+    	we = new XWPFWordExtractor(docx);
+ 
+    	List<XWPFParagraph> paras = docx.getParagraphs();
+    	Iterator<XWPFParagraph> itr = paras.iterator();
+    	while (itr.hasNext()) {
+			XWPFParagraph para = (XWPFParagraph) itr.next();
+			if(para.getText().contains("Category")){
+				XWPFRun run = para.createRun();
+				run.setText(": Sub-Juniros");
+				 
+			}
+			if(para.getText().contains("Umpire")){
+				XWPFRun run = para.createRun();
+				run.setText(": Dinesh");
+			}
+			if(para.getText().contains("Round")){
+				XWPFRun run = para.createRun();
+				run.setText(": pre-quater");
+			}
+		}
+    	
+    	docx.write(getFileOutputStream());
+    	 System.out.println("score_sheet.docx written successully");
+    }
+    catch (Exception exep)
+    {
+        exep.printStackTrace();
+    }finally {
+		try {
+			if(we!=null)
+				we.close();
+		} catch (IOException e) {
+			we = null;
+		}
+	}
+}
+
+	public Boolean printScoreSheet(List<GroupMatchesDetails> grpMatches){
+		
+		XWPFWordExtractor we = null;
+		XWPFDocument docx;
+		try {
+			
+		docx = new XWPFDocument(getFileInputStream());
+		we = new XWPFWordExtractor(docx);
+		List<XWPFParagraph> paras = docx.getParagraphs();
+	    
+		Iterator<XWPFParagraph> itrpara = paras.iterator();
+		
+		Iterator<GroupMatchesDetails> itr = grpMatches.iterator();
+		
+		while (itr.hasNext()) {
+			GroupMatchesDetails group = (GroupMatchesDetails) itr.next();
+			
+			group.getPlayer1Id();
+			group.getPlayer2Id();
+			group.getTournament().getCategory().getCategoryName();
+			
+		}
+		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+		
+		return false;
+	}
 
 }
