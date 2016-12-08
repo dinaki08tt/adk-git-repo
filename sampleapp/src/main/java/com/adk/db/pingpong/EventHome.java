@@ -113,12 +113,15 @@ public class EventHome {
 	public Event findById(java.lang.Integer id) {
 		log.debug("getting Event instance with id: " + id);
 		try {
-			Event instance = (Event) sessionFactory.getCurrentSession().get("com.adk.db.pingpong.Event", id);
+			Session s = sessionFactory.openSession();
+			Transaction tx = s.beginTransaction();
+			Event instance = (Event) s.get("com.adk.db.pingpong.Event", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
 				log.debug("get successful, instance found");
 			}
+			tx.commit();
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -153,5 +156,22 @@ public class EventHome {
 		}
 		tx.commit();
 		return ee;
+	}
+	
+
+	public List<Event> findByTournament(Tournament tour) {
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Criteria cr = s.createCriteria(Event.class);
+		cr.add(Restrictions.eq("tournament", tour));
+		List list = cr.list();
+		Event ee = null;
+		if(list != null && list.size()>0){
+			ee = (Event) list.get(0);
+		}else{
+			throw new IllegalStateException("No Records found for Tournament = "+ tour);
+		}
+		tx.commit();
+		return list;
 	}
 }

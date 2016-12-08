@@ -134,7 +134,7 @@ public class TournamentHome {
 		Session s = sessionFactory.getCurrentSession();
 		Transaction tx = s.beginTransaction();
 		Criteria cr = s.createCriteria(Tournament.class);
-		cr.add(Restrictions.like("tourName", name+"%"));
+		cr.add(Restrictions.eq("tourName", name));
 		List list = cr.list();
 		Tournament t = null;
 		if(list != null && list.size()>0){

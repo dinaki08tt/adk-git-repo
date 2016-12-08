@@ -1,5 +1,7 @@
 package com.adk.utils;
 
+import java.util.List;
+
 import com.adk.db.pingpong.Category;
 import com.adk.db.pingpong.CategoryHome;
 import com.adk.db.pingpong.Event;
@@ -8,6 +10,7 @@ import com.adk.db.pingpong.Tournament;
 import com.adk.db.pingpong.TournamentHome;
 import com.adk.excel.LeagueDesigner;
 import com.adk.excel.ReadExcel;
+import com.adk.msword.WriteWordFile;
 
 public class MainRun {
 
@@ -23,12 +26,25 @@ public class MainRun {
 		//populate Players to DB
 		//ReadExcel.populatePlayersToDB();
 		//get entry to tournament & design league
-		LeagueDesigner.createGroupMatchForEvent("mini cadet-singles-male-2-1");
+//		LeagueDesigner.createGroupMatchForEvent("mini cadet-singles-male-2-1");
 		
+//		List<Event> events = getAllEventsForTour();
+
 		//print score sheet
-	
+//		System.out.println(WriteWordFile.printScoreSheet(events));
+
+		//print a group sheet
+		
 	}
 	
+	private static List<Event> getAllEventsForTour() {
+		TournamentHome tdao = new TournamentHome();
+		Tournament t = tdao.findTourByName("Recreational Tournament");
+		EventHome edao = new EventHome();
+		List<Event> list = edao.findByTournament(t);
+		return list;
+	}
+
 	private static void createEvent() {
 		TournamentHome tdao = new TournamentHome();
 		Tournament t = tdao.findTourByName("Recreational Tournament");

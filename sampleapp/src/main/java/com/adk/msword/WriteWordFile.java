@@ -8,15 +8,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
+import com.adk.db.pingpong.Event;
 import com.adk.db.pingpong.GroupMatchesDetails;
+import com.adk.db.pingpong.PlayerDetails;
+import com.adk.db.pingpong.PlayerDetailsHome;
 
 //import org.apache.poi.hwpf.HWPFDocument;
 //import org.apache.poi.hwpf.extractor.WordExtractor;
@@ -104,6 +109,45 @@ public static void main1(String... args){
 	
 }
 
+public static FileOutputStream getFileOutputStream(String name) throws IOException {
+	String suffix_file_name = "score_sheet_";
+	String ext = ".docx";
+	FileOutputStream out = null;
+	File msword = null;
+	if(Constants.OUTPUT_DIR.isDirectory()){
+		msword = new File(Constants.OUTPUT_DIR, "msword");
+	}
+	
+	File[] files = msword.listFiles();
+	
+	for(File f : files){
+		
+		if(f.getName().equalsIgnoreCase(suffix_file_name)){
+			f.delete();
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			out = new FileOutputStream(f);
+		}
+	}
+	
+	File newFile = new File(msword, suffix_file_name+name+ext);
+	if(newFile.exists()){
+		out = new FileOutputStream(newFile);
+	}else{
+		newFile.createNewFile();
+		out = new FileOutputStream(newFile);
+	}
+	
+	return out;
+}
+
+
+
 public static FileOutputStream getFileOutputStream() throws FileNotFoundException {
 	FileOutputStream out = null;
 	File msword = null;
@@ -145,6 +189,60 @@ public static FileInputStream getFileInputStream() throws FileNotFoundException 
 	return (FileInputStream) in;
 }
 
+public static void main11(String... strings){
+
+	 XWPFWordExtractor we = null;
+	 XWPFDocument docx = null;
+	try {
+		docx = new XWPFDocument(getFileInputStream());
+		we = new XWPFWordExtractor(docx);
+ 		
+		System.out.println("========== Table Content =========");
+		String ppos ="P11";
+		String player ="Dinesh";
+		
+		replaceTableValue(docx, ppos, player);
+		
+		
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		try {
+			if(we !=null)
+				we.close();
+		} catch (IOException e) {
+			we = null;
+		}
+	}
+}
+
+public static void replaceTableValue(XWPFDocument docx, String ppos, String player) {
+	List<XWPFTable> tables = docx.getTables();
+	Iterator<XWPFTable> itrt = tables.iterator();
+//	int i = 0;
+	while (itrt.hasNext()) {
+//		System.out.println(i++);
+		XWPFTable table = (XWPFTable) itrt.next();
+		List<XWPFTableRow> rows = table.getRows();
+		Iterator<XWPFTableRow> itrrow = rows.iterator();
+		while (itrrow.hasNext()) {
+			XWPFTableRow row = (XWPFTableRow) itrrow.next();
+			XWPFTableCell cell = row.getCell(0);
+			String old = cell.getText();
+			if(old.equalsIgnoreCase(ppos)){
+				String v = old.replace(old, player);
+				cell.setText(": "+v);
+			}
+			
+		}
+		
+	}
+}
+
 public static void main(String[] args)
 {
 	 XWPFWordExtractor we = null;
@@ -153,26 +251,40 @@ public static void main(String[] args)
     {
     	XWPFDocument docx = new XWPFDocument(getFileInputStream());
     	we = new XWPFWordExtractor(docx);
- 
-    	List<XWPFParagraph> paras = docx.getParagraphs();
-    	Iterator<XWPFParagraph> itr = paras.iterator();
-    	while (itr.hasNext()) {
-			XWPFParagraph para = (XWPFParagraph) itr.next();
-			if(para.getText().contains("Category")){
-				XWPFRun run = para.createRun();
-				run.setText(": Sub-Juniros");
-				 
-			}
-			if(para.getText().contains("Umpire")){
-				XWPFRun run = para.createRun();
-				run.setText(": Dinesh");
-			}
-			if(para.getText().contains("Round")){
-				XWPFRun run = para.createRun();
-				run.setText(": pre-quater");
-			}
-		}
     	
+    	String categoryName = null;
+    	String matchType = null;
+    	String round = null;
+    	String position = null;
+    	categoryName = "Sub Juniors";
+    	matchType = "doubles";
+    	round = "One";
+    	position ="1";
+    	replacePara(docx, categoryName, matchType, "female", round, position);
+    	categoryName = "Sub Juniors";
+    	matchType = "doubles";
+    	round = "One";
+    	position ="2";
+    	replacePara(docx, categoryName, matchType, "female",round, position);
+    	categoryName = "Sub Juniors";
+    	matchType = "doubles";
+    	round = "One";
+    	position ="3";
+    	replacePara(docx, categoryName, matchType, "female",round, position);
+    	
+    	position = "4";
+    	replaceUmpireWinner(docx, position);
+
+    	String ppos ="P31";
+		String player ="Dinesh";
+		
+		replaceTableValue(docx, ppos, player);
+		
+		ppos ="P32";
+		player ="Gopal";
+		
+		replaceTableValue(docx, ppos, player);
+	 	
     	docx.write(getFileOutputStream());
     	 System.out.println("score_sheet.docx written successully");
     }
@@ -189,26 +301,136 @@ public static void main(String[] args)
 	}
 }
 
-	public Boolean printScoreSheet(List<GroupMatchesDetails> grpMatches){
+public static void replaceUmpireWinner(XWPFDocument docx, String pos) {
+	List<XWPFParagraph> paras = docx.getParagraphs();
+	Iterator<XWPFParagraph> itr = paras.iterator();
+	
+	while (itr.hasNext()) {
+		XWPFParagraph para = (XWPFParagraph) itr.next();
+	
+		List<XWPFRun> runs = para.getRuns();
+		XWPFRun r1 = para.createRun(); 
+		String text = para.getText();
+		if(text.contains(pos)){
+			for (XWPFRun r : runs) { 
+				r.setText("Umpire Name & Sign"+"                                                                                                     "+"Winner Name & Sign", 0); 
+			} 
+			text = text.replace(pos, "  "); 
+			r1.setText(text,0);
+		}
+				
+	}
+}
+
+
+public static void replacePlayer(XWPFDocument docx, String pos, String playerName) {
+	List<XWPFParagraph> paras = docx.getParagraphs();
+	Iterator<XWPFParagraph> itr = paras.iterator();
+	
+	while (itr.hasNext()) {
+		XWPFParagraph para = (XWPFParagraph) itr.next();
+	
+		List<XWPFRun> runs = para.getRuns();
+		XWPFRun r1 = para.createRun(); 
+		String text = para.getText();
+		if(text.contains(pos)){
+			for (XWPFRun r : runs) { 
+				r.setText(playerName, 0); 
+			} 
+			text = text.replace(pos, " "); 
+			r1.setText(text,0);
+		}
 		
-		XWPFWordExtractor we = null;
-		XWPFDocument docx;
+				
+	}
+}
+
+public static void replacePara(XWPFDocument docx, String categoryName, String matchType, String gender, String round,
+		String position) {
+	List<XWPFParagraph> paras = docx.getParagraphs();
+	Iterator<XWPFParagraph> itr = paras.iterator();
+	
+	while (itr.hasNext()) {
+		XWPFParagraph para = (XWPFParagraph) itr.next();
+	
+		List<XWPFRun> runs = para.getRuns();
+		String text = para.getText();
+		if(text.contains(position)){
+			for (XWPFRun r : runs) { 
+				r.setText("Category : "+categoryName+"                   "+"Gender : "+gender+"                   "+"Type : "+matchType+"                     "+"Round : "+round, 0); 
+			} 
+			text = text.replace(position, "  "); 
+			
+			XWPFRun r1 = para.createRun(); 
+			r1.setText(text,0);
+		}
+		
+				
+	}
+}
+
+	public static Boolean printScoreSheet(List<Event> events){
+		
+
+		XWPFWordExtractor we = null;		
 		try {
+
+			XWPFDocument docx;
 			
-		docx = new XWPFDocument(getFileInputStream());
-		we = new XWPFWordExtractor(docx);
-		List<XWPFParagraph> paras = docx.getParagraphs();
-	    
-		Iterator<XWPFParagraph> itrpara = paras.iterator();
-		
-		Iterator<GroupMatchesDetails> itr = grpMatches.iterator();
-		
+			
+		Iterator<Event> itr = events.iterator();
 		while (itr.hasNext()) {
-			GroupMatchesDetails group = (GroupMatchesDetails) itr.next();
+			Event event = (Event) itr.next();
+			Set groups = event.getGroupMatchesDetailses();
 			
-			group.getPlayer1Id();
-			group.getPlayer2Id();
-		
+			Object[] arrGrp = groups.toArray();
+			
+//			for(int j = 0; j < arrGrp.length; j++){
+			int j = 0;
+			GroupMatchesDetails match = null;
+			while(j < arrGrp.length){
+			docx = new XWPFDocument(getFileInputStream());
+			we = new XWPFWordExtractor(docx);
+				//replace 1	
+			match = (GroupMatchesDetails) arrGrp[j];
+
+				//replace place holders
+				replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), "One", "1");
+				String playerName = getPlayerName(match.getPlayer1Id());
+				replaceTableValue(docx, "P11", playerName);
+				playerName = getPlayerName(match.getPlayer2Id());
+				replaceTableValue(docx, "P12", playerName);
+				
+			j++;
+			//replace 2
+			match = (GroupMatchesDetails) arrGrp[j];
+
+			//replace place holders
+			
+			replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), "One", "2");
+			playerName = getPlayerName(match.getPlayer1Id());
+			replaceTableValue(docx, "P21", playerName);
+			playerName = getPlayerName(match.getPlayer2Id());
+			replaceTableValue(docx, "P22", playerName);
+			
+			j++;
+			//replace 3
+			match = (GroupMatchesDetails) arrGrp[j];
+
+			//replace place holders
+			
+			replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), "One", "3");
+			playerName = getPlayerName(match.getPlayer1Id());
+			replaceTableValue(docx, "P31", playerName);
+			playerName = getPlayerName(match.getPlayer2Id());
+			replaceTableValue(docx, "P32", playerName);
+			j++;
+						
+	    	replaceUmpireWinner(docx, "4");
+			
+	    	docx.write(getFileOutputStream(String.valueOf(j)));
+			}	
+				
 			
 		}
 		
@@ -218,10 +440,23 @@ public static void main(String[] args)
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+				try {
+					if(we != null)
+						we.close();
+				} catch (IOException e) {
+					we = null;
+				}
 		}
     	
-		
 		return false;
+	}
+	
+	
+	static PlayerDetailsHome pdao = new PlayerDetailsHome();
+	private static String getPlayerName(Integer player1Id) {
+		PlayerDetails p = pdao.findById(player1Id);
+		return p.getPlayerName();
 	}
 
 }

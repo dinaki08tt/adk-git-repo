@@ -136,3 +136,4 @@ TRUNCATE TABLE `game_score`;
 
 TRUNCATE TABLE `score_card`;
 
+

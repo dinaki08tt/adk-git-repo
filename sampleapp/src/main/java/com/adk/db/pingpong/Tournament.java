@@ -16,26 +16,24 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @XmlRootElement(name="Tournament")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlSeeAlso({GroupMatchesDetails.class})
+@XmlSeeAlso({Event.class})
 public class Tournament implements java.io.Serializable {
 
 	private Integer tourId;
 	private String tourName;
 	private String venue;
 	private String organizer;
+	@XmlElement(name="events")
 	private Set events = new HashSet(0);
-	@XmlElement(name="groupMatchesDetails")
-	private Set groupMatchesDetailses = new HashSet(0);
 
 	public Tournament() {
 	}
 
-	public Tournament(String tourName, String venue, String organizer, Set events, Set groupMatchesDetailses) {
+	public Tournament(String tourName, String venue, String organizer, Set events) {
 		this.tourName = tourName;
 		this.venue = venue;
 		this.organizer = organizer;
 		this.events = events;
-		this.groupMatchesDetailses = groupMatchesDetailses;
 	}
 
 	public Integer getTourId() {
@@ -62,14 +60,6 @@ public class Tournament implements java.io.Serializable {
 		this.venue = venue;
 	}
 
-	public Set getEvents() {
-		return this.events;
-	}
-
-	public void setEvents(Set events) {
-		this.events = events;
-	}
-
 	public String getOrganizer() {
 		return this.organizer;
 	}
@@ -78,12 +68,12 @@ public class Tournament implements java.io.Serializable {
 		this.organizer = organizer;
 	}
 
-	public Set getGroupMatchesDetailses() {
-		return this.groupMatchesDetailses;
+	public Set getEvents() {
+		return this.events;
 	}
 
-	public void setGroupMatchesDetailses(Set groupMatchesDetailses) {
-		this.groupMatchesDetailses = groupMatchesDetailses;
+	public void setEvents(Set events) {
+		this.events = events;
 	}
 
 }

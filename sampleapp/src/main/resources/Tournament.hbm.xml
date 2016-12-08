@@ -23,11 +23,5 @@
             </key>
             <one-to-many class="com.adk.db.pingpong.Event" />
         </set>
-        <set name="groupMatchesDetailses" table="group_matches_details" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="tournament_id" not-null="true" />
-            </key>
-            <one-to-many class="com.adk.db.pingpong.GroupMatchesDetails" />
-        </set>
     </class>
 </hibernate-mapping>
