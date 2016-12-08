@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +22,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
 import com.adk.db.pingpong.Event;
 import com.adk.db.pingpong.GroupMatchesDetails;
+import com.adk.db.pingpong.GroupMatchesDetailsHome;
 import com.adk.db.pingpong.PlayerDetails;
 import com.adk.db.pingpong.PlayerDetailsHome;
 
@@ -36,7 +39,6 @@ public static void main1(String... args){
 	try {
 		
 	out = getFileOutputStream();
-	
 	
 	   XWPFDocument document= new XWPFDocument();
         
@@ -109,8 +111,7 @@ public static void main1(String... args){
 	
 }
 
-public static FileOutputStream getFileOutputStream(String name) throws IOException {
-	String suffix_file_name = "score_sheet_";
+public static FileOutputStream getFileOutputStream(String suffix_file_name , String name) throws IOException {
 	String ext = ".docx";
 	FileOutputStream out = null;
 	File msword = null;
@@ -173,7 +174,7 @@ public static FileOutputStream getFileOutputStream() throws FileNotFoundExceptio
 	return out;
 }
 
-public static FileInputStream getFileInputStream() throws FileNotFoundException {
+public static FileInputStream getFileInputStream(String file_name) throws FileNotFoundException {
 	InputStream in = null;
 	File msword = null;
 	if(Constants.OUTPUT_DIR.isDirectory()){
@@ -182,7 +183,8 @@ public static FileInputStream getFileInputStream() throws FileNotFoundException 
 	File[] files = msword.listFiles();
 	
 	for(File f : files){
-		if(f.getName().equalsIgnoreCase("score_sheet_template.docx")){
+//		= "score_sheet_template.docx";
+		if(f.getName().equalsIgnoreCase(file_name)){
 			in = new FileInputStream(f);
 		}
 	}
@@ -194,7 +196,7 @@ public static void main11(String... strings){
 	 XWPFWordExtractor we = null;
 	 XWPFDocument docx = null;
 	try {
-		docx = new XWPFDocument(getFileInputStream());
+		docx = new XWPFDocument(getFileInputStream("score_sheet_template.docx"));
 		we = new XWPFWordExtractor(docx);
  		
 		System.out.println("========== Table Content =========");
@@ -223,9 +225,7 @@ public static void main11(String... strings){
 public static void replaceTableValue(XWPFDocument docx, String ppos, String player) {
 	List<XWPFTable> tables = docx.getTables();
 	Iterator<XWPFTable> itrt = tables.iterator();
-//	int i = 0;
 	while (itrt.hasNext()) {
-//		System.out.println(i++);
 		XWPFTable table = (XWPFTable) itrt.next();
 		List<XWPFTableRow> rows = table.getRows();
 		Iterator<XWPFTableRow> itrrow = rows.iterator();
@@ -243,13 +243,38 @@ public static void replaceTableValue(XWPFDocument docx, String ppos, String play
 	}
 }
 
-public static void main(String[] args)
+
+public static void replaceTableValueAllCell(XWPFDocument docx, String ppos, String player) {
+	List<XWPFTable> tables = docx.getTables();
+	Iterator<XWPFTable> itrt = tables.iterator();
+	while (itrt.hasNext()) {
+		XWPFTable table = (XWPFTable) itrt.next();
+		List<XWPFTableRow> rows = table.getRows();
+		Iterator<XWPFTableRow> itrrow = rows.iterator();
+		while (itrrow.hasNext()) {
+			XWPFTableRow row = (XWPFTableRow) itrrow.next();
+			List<XWPFTableCell> allcells = row.getTableCells();
+			Iterator<XWPFTableCell> itrc = allcells.iterator();
+			while (itrc.hasNext()) {
+				XWPFTableCell cell = (XWPFTableCell) itrc.next();
+				String old = cell.getText();
+				if(old.equalsIgnoreCase(ppos)){
+					String v = old.replace(old, player);
+					cell.setText(": "+v);
+				}
+			}
+		}
+		
+	}
+}
+
+public static void main111(String[] args)
 {
 	 XWPFWordExtractor we = null;
 	  
     try
     {
-    	XWPFDocument docx = new XWPFDocument(getFileInputStream());
+    	XWPFDocument docx = new XWPFDocument(getFileInputStream("score_sheet_template.docx"));
     	we = new XWPFWordExtractor(docx);
     	
     	String categoryName = null;
@@ -260,17 +285,17 @@ public static void main(String[] args)
     	matchType = "doubles";
     	round = "One";
     	position ="1";
-    	replacePara(docx, categoryName, matchType, "female", round, position);
+    	replacePara(docx, categoryName, matchType, "female", "grpName", round, position);
     	categoryName = "Sub Juniors";
     	matchType = "doubles";
     	round = "One";
     	position ="2";
-    	replacePara(docx, categoryName, matchType, "female",round, position);
+    	replacePara(docx, categoryName, matchType, "female", "grpName", round, position);
     	categoryName = "Sub Juniors";
     	matchType = "doubles";
     	round = "One";
     	position ="3";
-    	replacePara(docx, categoryName, matchType, "female",round, position);
+    	replacePara(docx, categoryName, matchType, "female", "grpName", round, position);
     	
     	position = "4";
     	replaceUmpireWinner(docx, position);
@@ -286,7 +311,7 @@ public static void main(String[] args)
 		replaceTableValue(docx, ppos, player);
 	 	
     	docx.write(getFileOutputStream());
-    	 System.out.println("score_sheet.docx written successully");
+    	System.out.println("score_sheet.docx written successully");
     }
     catch (Exception exep)
     {
@@ -322,6 +347,27 @@ public static void replaceUmpireWinner(XWPFDocument docx, String pos) {
 	}
 }
 
+public static void replaceUmpireOnly(XWPFDocument docx, String pos) {
+	List<XWPFParagraph> paras = docx.getParagraphs();
+	Iterator<XWPFParagraph> itr = paras.iterator();
+	
+	while (itr.hasNext()) {
+		XWPFParagraph para = (XWPFParagraph) itr.next();
+	
+		List<XWPFRun> runs = para.getRuns();
+		XWPFRun r1 = para.createRun(); 
+		String text = para.getText();
+		if(text.contains(pos)){
+			for (XWPFRun r : runs) { 
+				r.setText("Umpire Name & Sign", 0); 
+			} 
+			text = text.replace(pos, "  "); 
+			r1.setText(text,0);
+		}
+				
+	}
+}
+
 
 public static void replacePlayer(XWPFDocument docx, String pos, String playerName) {
 	List<XWPFParagraph> paras = docx.getParagraphs();
@@ -345,7 +391,7 @@ public static void replacePlayer(XWPFDocument docx, String pos, String playerNam
 	}
 }
 
-public static void replacePara(XWPFDocument docx, String categoryName, String matchType, String gender, String round,
+public static void replacePara(XWPFDocument docx, String categoryName, String matchType, String gender, String grpName, String round,
 		String position) {
 	List<XWPFParagraph> paras = docx.getParagraphs();
 	Iterator<XWPFParagraph> itr = paras.iterator();
@@ -357,7 +403,7 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 		String text = para.getText();
 		if(text.contains(position)){
 			for (XWPFRun r : runs) { 
-				r.setText("Category : "+categoryName+"                   "+"Gender : "+gender+"                   "+"Type : "+matchType+"                     "+"Round : "+round, 0); 
+				r.setText("Category : "+categoryName+"       "+"Gender : "+gender+"       "+"GroupName : "+grpName+"       "+"Type : "+matchType+"       "+"Round : "+round, 0); 
 			} 
 			text = text.replace(position, "  "); 
 			
@@ -389,13 +435,12 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 			int j = 0;
 			GroupMatchesDetails match = null;
 			while(j < arrGrp.length){
-			docx = new XWPFDocument(getFileInputStream());
+			docx = new XWPFDocument(getFileInputStream("score_sheet_template.docx"));
 			we = new XWPFWordExtractor(docx);
 				//replace 1	
 			match = (GroupMatchesDetails) arrGrp[j];
-
 				//replace place holders
-				replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), "One", "1");
+				replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), match.getGroupName(), "One", "1");
 				String playerName = getPlayerName(match.getPlayer1Id());
 				replaceTableValue(docx, "P11", playerName);
 				playerName = getPlayerName(match.getPlayer2Id());
@@ -407,7 +452,7 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 
 			//replace place holders
 			
-			replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), "One", "2");
+			replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), match.getGroupName(), "One", "2");
 			playerName = getPlayerName(match.getPlayer1Id());
 			replaceTableValue(docx, "P21", playerName);
 			playerName = getPlayerName(match.getPlayer2Id());
@@ -419,7 +464,7 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 
 			//replace place holders
 			
-			replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), "One", "3");
+			replacePara(docx, event.getCategory().getCategoryName(), event.getCategory().getMatchType(), event.getCategory().getGender(), match.getGroupName(), "One", "3");
 			playerName = getPlayerName(match.getPlayer1Id());
 			replaceTableValue(docx, "P31", playerName);
 			playerName = getPlayerName(match.getPlayer2Id());
@@ -428,7 +473,7 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 						
 	    	replaceUmpireWinner(docx, "4");
 			
-	    	docx.write(getFileOutputStream(String.valueOf(j)));
+	    	docx.write(getFileOutputStream("score_sheet_",String.valueOf(j)));
 			}	
 				
 			
@@ -459,4 +504,136 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 		return p.getPlayerName();
 	}
 
+	/**
+	 * Group Match score sheet
+	 * 
+	 */
+	public static void main(String arg[]){
+		List<Event> events = null;
+		 printGroupSheet(events);
+		
+	}
+
+	public static void printGroupSheet(List<Event> events) {
+		XWPFWordExtractor we = null;
+		 XWPFDocument docx = null;
+		try {
+
+			Iterator<Event> itr = events.iterator();
+				while (itr.hasNext()) {
+					
+					Event event = (Event) itr.next();
+					
+					//4 groups
+					List<String> list = listDistinctGroupsByEvent(event); // unique group Names By Eventid
+					
+					Iterator<String> it = list.iterator();
+					
+					//per event
+					while (it.hasNext()) {
+						Set<Integer> pId = new HashSet<Integer>(); // four players from a group
+						String groupName = it.next();
+						//6 matches
+						List<GroupMatchesDetails> groups = findAllGroupsByGroupName(groupName, event);
+						Iterator<GroupMatchesDetails> itrgrp = groups.iterator();
+						while (itrgrp.hasNext()) {
+							GroupMatchesDetails match = (GroupMatchesDetails) itrgrp.next();
+							pId.add(match.getPlayer1Id());
+							pId.add(match.getPlayer2Id());
+						}
+						docx = new XWPFDocument(getFileInputStream("group_sheet_template.docx"));
+						we = new XWPFWordExtractor(docx);
+						
+						//four players
+						Object[] arrI = null;
+						arrI = pId.toArray();
+						String player = getPlayerName((Integer) arrI[0]);
+						replaceTableValueAllCell(docx, "P1", player);
+						player = getPlayerName((Integer) arrI[1]);
+						replaceTableValueAllCell(docx, "P2", player);
+						player = getPlayerName((Integer) arrI[2]);
+						replaceTableValueAllCell(docx, "P3", player);
+						player = getPlayerName((Integer) arrI[3]);
+						replaceTableValueAllCell(docx, "P4", player);
+
+						String categoryName = null;
+				    	String matchType = null;
+				    	String round = null;
+				    	String position = null;
+				    	categoryName = event.getCategory().getCategoryName();
+				    	matchType = event.getCategory().getMatchType();
+				    	round = "One";
+				    	position ="1";
+				    	replaceParaInGroupSheet(docx, categoryName, matchType, event.getCategory().getGender(), groupName, round, position);
+						
+				    	replaceUmpireOnly(docx, "2");
+				    	
+						docx.write(getFileOutputStream("group_sheet_"+groupName+"_",event.getEventName()));		
+					}
+					
+					
+					
+			
+				}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(we !=null)
+					we.close();
+			} catch (IOException e) {
+				we = null;
+			}
+		}
+	}
+	
+	private static List<GroupMatchesDetails> findAllGroupsByGroupName(String groupName, Event e) {
+		// TODO Auto-generated method stub
+		GroupMatchesDetailsHome gDao = new GroupMatchesDetailsHome();
+		List<GroupMatchesDetails> all = gDao.findGroupsByGroupNameAndEvent(groupName, e.getEventId());
+		return all;
+	}
+
+	/**
+	 * 
+	 * @param Event
+	 * @return
+	 */
+	private static List<String> listDistinctGroupsByEvent(Event e) {
+		GroupMatchesDetailsHome gDao = new GroupMatchesDetailsHome();
+		List<String> list = gDao.findDistinctGroupNameByEventid(e.getEventId());
+		return list;
+	}
+
+	private static void replaceParaInGroupSheet(XWPFDocument docx, String categoryName, String matchType, String gender,
+			String grpName, String round, String position) {
+		
+		List<XWPFParagraph> paras = docx.getParagraphs();
+		Iterator<XWPFParagraph> itr = paras.iterator();
+		
+		while (itr.hasNext()) {
+			XWPFParagraph para = (XWPFParagraph) itr.next();
+		
+			List<XWPFRun> runs = para.getRuns();
+			String text = para.getText();
+			if(text.contains(position)){
+				for (XWPFRun r : runs) { 
+					r.setText("Category : "+categoryName+"       "+"Gender : "+gender+"       "+"GroupName : "+grpName+"       "+"Type : "+matchType+"       "+"Round : "+round, 0); 
+				} 
+				text = text.replace(position, "  "); 
+				
+				XWPFRun r1 = para.createRun(); 
+				r1.setText(text,0);
+			}
+			
+					
+		}
+		
+	}
+	
 }

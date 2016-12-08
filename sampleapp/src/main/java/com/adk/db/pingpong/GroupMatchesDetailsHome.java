@@ -1,11 +1,14 @@
 package com.adk.db.pingpong;
 // Generated Dec 5, 2016 10:30:32 AM by Hibernate Tools 4.3.1.Final
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -126,4 +129,35 @@ public class GroupMatchesDetailsHome {
 			throw re;
 		}
 	}
+
+	public List<String> findDistinctGroupNameByEventid(Integer eventId) {
+		String hql = "select distinct g.groupName from GroupMatchesDetails g, Event e where e.eventId = "+eventId;
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Query query = s.createQuery(hql);
+		List results = query.list();
+		
+//		Iterator<String> i = results.iterator();
+//		List<GroupMatchesDetails> matches = new ArrayList<GroupMatchesDetails>();
+//		List<GroupMatchesDetails> resultsGroup = null;
+//		while (i.hasNext()) {
+//			String name = (String) i.next();
+//			hql = "select g from GroupMatchesDetails g , Event e where g.groupName = "+name+" and e.eventId = "+eventId;
+//			query = s.createQuery(hql);
+//			resultsGroup = query.list();
+//		}
+		tx.commit();
+		return results;
+	}
+
+	public List<GroupMatchesDetails> findGroupsByGroupNameAndEvent(String groupName, Integer eventId) {
+		String hql = "select g from GroupMatchesDetails g , Event e where g.groupName = "+groupName+" and e.eventId = "+eventId;
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Query query = s.createQuery(hql);
+		List results = query.list();
+		tx.commit();
+		return results;
+	}
+	
 }

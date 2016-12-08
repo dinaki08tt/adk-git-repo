@@ -34,7 +34,7 @@ public class MainRun {
 //		System.out.println(WriteWordFile.printScoreSheet(events));
 
 		//print a group sheet
-		
+		WriteWordFile.printGroupSheet(getAllEventsForTour());
 	}
 	
 	private static List<Event> getAllEventsForTour() {
