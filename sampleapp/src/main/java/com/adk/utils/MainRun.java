@@ -16,7 +16,7 @@ import com.adk.msword.WriteWordFile;
 public class MainRun {
 
 	public static void main(String args[]){
-		//create category
+	//create category
 //		createCategory();
 //		createAllCategory();
 		//create tournament
@@ -25,17 +25,17 @@ public class MainRun {
 //		createEvents();
 		
 		//populate Players to DB
-		//ReadExcel.populatePlayersToDB();
+//		ReadExcel.populatePlayersToDB();
 		//get entry to tournament & design league
-		LeagueDesigner.createGroupMatchForEvent("mini cadet-singles-male-2-1");
+//		LeagueDesigner.createGroupMatchForEvent("mini cadet-singles-male-1-1");
 		
-		List<Event> events = getAllEventsForTour();
+//		List<Event> events = getAllEventsForTour();
 
 		//print score sheet
-		WriteFile.printScoreSheet(events);
+//		WriteFile.printScoreSheet(events);
 
 		//print a group sheet
-		WriteFile.printGroupSheet(events);
+//		WriteFile.printGroupSheet(events);
 	}
 	
 	private static List<Event> getAllEventsForTour() {

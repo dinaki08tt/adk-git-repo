@@ -13,7 +13,17 @@
 
 <!-- Include the jQuery Mobile library -->
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $.ajax({
+        url: "http://localhost:8080/sampleapp/rest/player/get/1"
+    }).then(function(data) {
+    	$('.greeting-id').append(data.playerName);
+       $('.greeting-content').append(data.playerCode);
+    });
+});
 
+</script>
 </head>
 <body>
 <div data-role="page">
@@ -27,7 +37,10 @@
   </div>
   <div data-role="page" id="pageone">
   <div data-role="main" class="ui-content">
-    <a href="#pagetwo">Go to Page Two</a>
+    <div>
+            <p class="greeting-id">The ID is </p>
+            <p class="greeting-content">The content is </p>
+        </div>
   </div>
 </div>
 
