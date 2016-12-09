@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlSeeAlso({ScoreCard.class})
 public class GameScore implements java.io.Serializable {
 
-	private Integer matchId;
+	private Integer gameScoreId;
 	@XmlTransient
 	private GroupMatchesDetails groupMatchesDetails;
 	@XmlTransient
@@ -27,39 +27,38 @@ public class GameScore implements java.io.Serializable {
 	@XmlTransient
 	private PlayerDetails playerDetailsByPlayer1Id;
 	private Integer gameId;
+	private int matchId;
 	private Integer player1Score;
 	private Integer player2Score;
-	@XmlElement(name="scorecards")
-	private Set scoreCards = new HashSet(0);
 
 	public GameScore() {
 	}
 
 	public GameScore(GroupMatchesDetails groupMatchesDetails, PlayerDetails playerDetailsByPlayer2Id,
-			PlayerDetails playerDetailsByPlayer1Id) {
+			PlayerDetails playerDetailsByPlayer1Id, int matchId) {
 		this.groupMatchesDetails = groupMatchesDetails;
 		this.playerDetailsByPlayer2Id = playerDetailsByPlayer2Id;
 		this.playerDetailsByPlayer1Id = playerDetailsByPlayer1Id;
+		this.matchId = matchId;
 	}
 
 	public GameScore(GroupMatchesDetails groupMatchesDetails, PlayerDetails playerDetailsByPlayer2Id,
-			PlayerDetails playerDetailsByPlayer1Id, Integer gameId, Integer player1Score, Integer player2Score,
-			Set scoreCards) {
+			PlayerDetails playerDetailsByPlayer1Id, Integer gameId, int matchId, Integer player1Score, Integer player2Score) {
 		this.groupMatchesDetails = groupMatchesDetails;
 		this.playerDetailsByPlayer2Id = playerDetailsByPlayer2Id;
 		this.playerDetailsByPlayer1Id = playerDetailsByPlayer1Id;
 		this.gameId = gameId;
+		this.matchId = matchId;
 		this.player1Score = player1Score;
 		this.player2Score = player2Score;
-		this.scoreCards = scoreCards;
 	}
 
-	public Integer getMatchId() {
-		return this.matchId;
+	public Integer getGameScoreId() {
+		return this.gameScoreId;
 	}
 
-	public void setMatchId(Integer matchId) {
-		this.matchId = matchId;
+	public void setGameScoreId(Integer gameScoreId) {
+		this.gameScoreId = gameScoreId;
 	}
 
 	public GroupMatchesDetails getGroupMatchesDetails() {
@@ -94,6 +93,14 @@ public class GameScore implements java.io.Serializable {
 		this.gameId = gameId;
 	}
 
+	public int getMatchId() {
+		return this.matchId;
+	}
+
+	public void setMatchId(int matchId) {
+		this.matchId = matchId;
+	}
+
 	public Integer getPlayer1Score() {
 		return this.player1Score;
 	}
@@ -110,12 +117,13 @@ public class GameScore implements java.io.Serializable {
 		this.player2Score = player2Score;
 	}
 
-	public Set getScoreCards() {
-		return this.scoreCards;
-	}
 
-	public void setScoreCards(Set scoreCards) {
-		this.scoreCards = scoreCards;
+	@Override
+	public String toString() {
+		return "GameScore [matchId=" + matchId + ", groupMatchesDetails=" + groupMatchesDetails
+				+ ", playerDetailsByPlayer2Id=" + playerDetailsByPlayer2Id + ", playerDetailsByPlayer1Id="
+				+ playerDetailsByPlayer1Id + ", gameId=" + gameId + ", player1Score=" + player1Score + ", player2Score="
+				+ player2Score+"]";
 	}
 
 }

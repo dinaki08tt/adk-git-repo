@@ -14,24 +14,15 @@ public class ScoreCard implements java.io.Serializable {
 
 	private Integer scoreId;
 	@XmlTransient
-	private GameScore gameScore;
-	@XmlTransient
 	private PlayerDetails playerDetails;
-	private Date matchDate;
-	private int score;
-	private int bonus;
 	private int totalScore;
 
 	public ScoreCard() {
 	}
 
-	public ScoreCard(GameScore gameScore, PlayerDetails playerDetails, Date matchDate, int score, int bonus,
-			int totalScore) {
-		this.gameScore = gameScore;
+	public ScoreCard(GameScore gameScore, PlayerDetails playerDetails, int totalScore) {
+		
 		this.playerDetails = playerDetails;
-		this.matchDate = matchDate;
-		this.score = score;
-		this.bonus = bonus;
 		this.totalScore = totalScore;
 	}
 
@@ -43,44 +34,12 @@ public class ScoreCard implements java.io.Serializable {
 		this.scoreId = scoreId;
 	}
 
-	public GameScore getGameScore() {
-		return this.gameScore;
-	}
-
-	public void setGameScore(GameScore gameScore) {
-		this.gameScore = gameScore;
-	}
-
 	public PlayerDetails getPlayerDetails() {
 		return this.playerDetails;
 	}
 
 	public void setPlayerDetails(PlayerDetails playerDetails) {
 		this.playerDetails = playerDetails;
-	}
-
-	public Date getMatchDate() {
-		return this.matchDate;
-	}
-
-	public void setMatchDate(Date matchDate) {
-		this.matchDate = matchDate;
-	}
-
-	public int getScore() {
-		return this.score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
-
-	public int getBonus() {
-		return this.bonus;
-	}
-
-	public void setBonus(int bonus) {
-		this.bonus = bonus;
 	}
 
 	public int getTotalScore() {

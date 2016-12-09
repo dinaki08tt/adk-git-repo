@@ -10,6 +10,7 @@ import com.adk.db.pingpong.Tournament;
 import com.adk.db.pingpong.TournamentHome;
 import com.adk.excel.LeagueDesigner;
 import com.adk.excel.ReadExcel;
+import com.adk.freemarker.WriteFile;
 import com.adk.msword.WriteWordFile;
 
 public class MainRun {
@@ -26,15 +27,15 @@ public class MainRun {
 		//populate Players to DB
 		//ReadExcel.populatePlayersToDB();
 		//get entry to tournament & design league
-//		LeagueDesigner.createGroupMatchForEvent("mini cadet-singles-male-2-1");
+		LeagueDesigner.createGroupMatchForEvent("mini cadet-singles-male-2-1");
 		
-//		List<Event> events = getAllEventsForTour();
+		List<Event> events = getAllEventsForTour();
 
 		//print score sheet
-//		System.out.println(WriteWordFile.printScoreSheet(events));
+		WriteFile.printScoreSheet(events);
 
 		//print a group sheet
-		WriteWordFile.printGroupSheet(getAllEventsForTour());
+		WriteFile.printGroupSheet(events);
 	}
 	
 	private static List<Event> getAllEventsForTour() {

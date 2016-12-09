@@ -6,7 +6,9 @@ import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
 import com.adk.db.util.SessionFactoryHelper;
@@ -34,8 +36,11 @@ public class GameScoreHome {
 	public void persist(GameScore transientInstance) {
 		log.debug("persisting GameScore instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			Session s = sessionFactory.getCurrentSession(); 
+			Transaction tx = s.beginTransaction();
+			s.persist(transientInstance);
 			log.debug("persist successful");
+			tx.commit();
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
 			throw re;

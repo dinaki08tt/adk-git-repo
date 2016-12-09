@@ -7,12 +7,16 @@ import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Restrictions;
 
 import com.adk.db.util.SessionFactoryHelper;
 
@@ -137,19 +141,15 @@ public class GroupMatchesDetailsHome {
 		Query query = s.createQuery(hql);
 		List results = query.list();
 		
-//		Iterator<String> i = results.iterator();
-//		List<GroupMatchesDetails> matches = new ArrayList<GroupMatchesDetails>();
-//		List<GroupMatchesDetails> resultsGroup = null;
-//		while (i.hasNext()) {
-//			String name = (String) i.next();
-//			hql = "select g from GroupMatchesDetails g , Event e where g.groupName = "+name+" and e.eventId = "+eventId;
-//			query = s.createQuery(hql);
-//			resultsGroup = query.list();
-//		}
 		tx.commit();
 		return results;
 	}
-
+	/**
+	 * 
+	 * @param groupName
+	 * @param eventId
+	 * @return
+	 */
 	public List<GroupMatchesDetails> findGroupsByGroupNameAndEvent(String groupName, Integer eventId) {
 		String hql = "select g from GroupMatchesDetails g , Event e where g.groupName = "+groupName+" and e.eventId = "+eventId;
 		Session s = sessionFactory.getCurrentSession();
@@ -158,6 +158,45 @@ public class GroupMatchesDetailsHome {
 		List results = query.list();
 		tx.commit();
 		return results;
+	}
+	
+	
+	public GroupMatchesDetails findMatchByMatchId(String groupName, Integer matchId) {
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Criteria cr = s.createCriteria(GroupMatchesDetails.class);
+		Criterion m = Restrictions.eq("groupName", groupName);
+		cr.add(m);
+		Criterion g = Restrictions.eq("matchId", matchId);
+		cr.add(g);
+		LogicalExpression andExp = Restrictions.and(m, g);
+		cr.add(andExp);
+		List list = cr.list();
+		GroupMatchesDetails grp = null;
+		if(list != null && list.size()>0){
+			grp = (GroupMatchesDetails) list.get(0);
+		}else{
+			throw new IllegalStateException("No Records found for match Id = "+ matchId+"  groupName ="+groupName);
+		}
+		tx.commit();
+		return grp;
+	}
+
+	public GroupMatchesDetails update(GroupMatchesDetails match) {
+		log.debug("updating GroupMatchesDetails instance");
+		try {
+			Session s = sessionFactory.getCurrentSession();
+			Transaction tx = s.beginTransaction();
+			s.save(match);
+			match = findById(match.getGroupId());
+				
+			log.debug("persist successful");
+			tx.commit();
+		} catch (RuntimeException re) {
+			log.error("persist failed", re);
+			throw re;
+		}
+		return match;
 	}
 	
 }

@@ -28,7 +28,7 @@ public class Event implements java.io.Serializable {
 	private String eventName;
 	@XmlElement(name="groupMatches")
 	private Set groupMatchesDetailses = new HashSet(0);
-	FetchType f;
+	
 	
 	public Event() {
 	}

@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlSeeAlso({GameScore.class})
 public class GroupMatchesDetails implements java.io.Serializable {
 
+
 	private Integer groupId;
 	@XmlTransient
 	private Event event;
@@ -147,6 +148,15 @@ public class GroupMatchesDetails implements java.io.Serializable {
 
 	public void setGameScores(Set gameScores) {
 		this.gameScores = gameScores;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "GroupMatchesDetails [groupId=" + groupId + ", event=" + event + ", groupName=" + groupName
+				+ ", matchId=" + matchId + ", matchDate=" + matchDate + ", player1Id=" + player1Id + ", player2Id="
+				+ player2Id + ", player1Score=" + player1Score + ", player2Score=" + player2Score + ", winner=" + winner
+				+ ", gameScores=" + gameScores + "]";
 	}
 
 }

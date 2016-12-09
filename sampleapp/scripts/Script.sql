@@ -48,13 +48,14 @@ drop table `game_score`
 
 create table `game_score`(
 	`group_id` int NOT NULL,
-	`match_id` int NOT NULL AUTO_INCREMENT,
+	`game_score_id` int NOT NULL AUTO_INCREMENT,
 	`game_id` int,
+	`match_id` int NOT NULL,
 	`player_1_id` int NOT NULL,
 	`player_2_id` int NOT NULL,
 	`player_1_score` int,
 	`player_2_score` int,	
-	 PRIMARY KEY (`match_id`)
+	 PRIMARY KEY (`game_score_id`)
 );
 
 
@@ -64,6 +65,8 @@ ALTER TABLE `game_score` ADD CONSTRAINT `game_score_fk1` FOREIGN KEY (`player_2_
 ALTER TABLE `game_score` DROP FOREIGN KEY `game_score_fk1`;
 ALTER TABLE `game_score` ADD CONSTRAINT `game_score_fk2` FOREIGN KEY (`group_id`) REFERENCES `Group_Matches_details`(`Group_id`);
 ALTER TABLE `game_score` DROP FOREIGN KEY `game_score_fk2`;
+ALTER TABLE `game_score` ADD CONSTRAINT `game_score_fk3` FOREIGN KEY (`match_id`) REFERENCES `Group_Matches_details`(`Match_id`);
+ALTER TABLE `game_score` DROP FOREIGN KEY `game_score_fk3`;
 
 CREATE TABLE `score_card` (
                 `score_id` int NOT NULL AUTO_INCREMENT,
@@ -76,10 +79,14 @@ CREATE TABLE `score_card` (
                 PRIMARY KEY (`score_id`)
 );
 
+ALTER TABLE `score_card` DROP COLUMN `Match_id`;
+ALTER TABLE `score_card` DROP COLUMN `Match_date`;
+ALTER TABLE `score_card` DROP COLUMN `Score`;
+ALTER TABLE `score_card` DROP COLUMN `Bonus`;
+
 ALTER TABLE `score_card` ADD CONSTRAINT `score_card_fk0` FOREIGN KEY (`player_id`) REFERENCES `Player_details`(`Player_id`);
 ALTER TABLE `score_card` DROP FOREIGN KEY `score_card_fk0`;
-ALTER TABLE `score_card` ADD CONSTRAINT `score_card_fk1` FOREIGN KEY (`Match_id`) REFERENCES `game_score`(`match_id`);
-ALTER TABLE `score_card` DROP FOREIGN KEY `score_card_fk1`;
+
 
 
 CREATE TABLE `Tournament` (
