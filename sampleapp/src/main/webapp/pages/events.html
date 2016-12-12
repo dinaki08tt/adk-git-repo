@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ADK Tournament Manager</title>
+<script src="../js/tour.js"></script>
+
+<meta http-equiv="Expires" CONTENT="0">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../js/tour.js"></script>
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<!-- Include the jQuery library -->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include the jQuery Mobile library -->
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="events">
+
+  <div data-role="header">
+    <h1>ADK Tournament Manager</h1>
+  </div>
+	<h2>Create Events</h2>
+	<div data-role="main" class="ui-content">
+	<input class="ui-btn ui-btn-inline" type="submit" onclick="getCombos()" value="Load Tour">
+		<div class="ui-field-contain">
+        	<label for="eventName">Event Name:</label>
+        	<input type="text" name="eventName" id="eventName">       
+        <label for="eday">Event Date :</label>
+        <input type="date" name="eday" id="eday">
+        
+        <label for="venue">Venue :</label>
+        <input type="text" name="venue" id="venue">
+        
+      <fieldset class="ui-field-contain">
+        <label for="category">Select Category</label>
+        <select name="category" id="category" data-native-menu="false">
+        </select>
+      </fieldset>
+      
+      <fieldset class="ui-field-contain">
+        <label for="tour">Select Tournament</label>
+        <select name="tour" id="tour" data-native-menu="false">
+        </select>
+      </fieldset>
+       </div>
+       <a href="../index.html">Go to Dashboard</a>	
+  	</div>
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+</div>
+</body>
+</html>

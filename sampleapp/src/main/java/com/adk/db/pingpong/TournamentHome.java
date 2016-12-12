@@ -7,6 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -39,7 +40,7 @@ public class TournamentHome {
 		log.debug("persisting Tournament instance");
 		try {
 			
-			Session s =sessionFactory.getCurrentSession();
+			Session s = sessionFactory.getCurrentSession();
 			Transaction tx= s.beginTransaction();
 			s.persist(transientInstance);
 			log.debug("persist successful");
@@ -144,5 +145,15 @@ public class TournamentHome {
 		}
 		tx.commit();
 		return t;
+	}
+
+	public List<Tournament> findAll() {
+		String hql = "from Tournament t";
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Query query = s.createQuery(hql);
+		List results = query.list();
+		tx.commit();
+		return results;
 	}
 }

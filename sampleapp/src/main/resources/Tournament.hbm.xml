@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <property name="tourName" type="string">
-            <column name="tour_name" length="100" />
+            <column name="tour_name" unique="true" length="100" />
         </property>
         <property name="venue" type="string">
             <column name="venue" length="200" />
@@ -17,7 +17,7 @@
         <property name="organizer" type="string">
             <column name="organizer" length="100" />
         </property>
-        <set name="events" table="event" inverse="true" lazy="true" fetch="select">
+        <set name="events" table="event" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="tour_id" not-null="true" />
             </key>

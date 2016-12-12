@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta http-equiv="Expires" CONTENT="0">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
 <!-- Include meta tag to ensure proper rendering and touch zooming -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,59 +15,37 @@
 
 <!-- Include the jQuery Mobile library -->
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $.ajax({
-        url: "http://localhost:8080/sampleapp/rest/player/get/1"
-    }).then(function(data) {
-    	$('.greeting-id').append(data.playerName);
-       $('.greeting-content').append(data.playerCode);
-    });
-});
+<script src="js/tour.js"></script>
 
+<script type="text/javascript">
+//$(document).ready(function() { /*code here */ });
+	
 </script>
+
 </head>
 <body>
-<div data-role="page">
-
-  <div data-role="header">
-    <h1>Welcome To My Homepage</h1>
+<div data-role="page" id="pageone">
+<div data-role="header">
+    <h1>ADK Tournament Manager</h1>
   </div>
-
-  <div data-role="main" class="ui-content">
-    <p>I Am Now A Mobile Developer!!</p>
+ 
+<div data-role="main" class="ui-content">
+	<h2>Dashboard</h2>
+    <ul data-role="listview" data-inset="true">    
+      <li><a href="pages/player_details.html">Update Game Score</a></li>
+      <li><a href="pages/player_details.html">Player Details</a></li>
+      <li><a href="pages/tournament.html">Create Tournament</a></li>
+      <li><a href="pages/player_details.html">Player Details</a></li>
+      <li><a href="pages/player_details.html">Player Details</a></li>
+      <li data-icon="location"><a href="#">Venue</a></li>   
+      </ul>
   </div>
-  <div data-role="page" id="pageone">
-  <div data-role="main" class="ui-content">
-    <div>
-            <p class="greeting-id">The ID is </p>
-            <p class="greeting-content">The content is </p>
-        </div>
-  </div>
-</div>
-
-<div data-role="page" id="pagetwo">
-  <div data-role="main" class="ui-content">
-    <a href="#pageone">Go to Page One</a>
-  </div>
-</div>
   
-  <div data-role="page" id="pageone">
-  <div data-role="main" class="ui-content">
-    <a href="#pagetwo">Go to Page Two</a>
-  </div>
-</div>
-
-<div data-role="page" data-dialog="true" id="pagetwo">
-  <div data-role="main" class="ui-content">
-    <a href="#pageone">Go to Page One</a>
-  </div>
-</div>
-
   <div data-role="footer">
     <h1>Footer Text</h1>
   </div>
 
 </div>
+
 </body>
 </html>

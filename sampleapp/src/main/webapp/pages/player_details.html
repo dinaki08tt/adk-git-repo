@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Expires" CONTENT="0">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<!-- Include the jQuery library -->
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="../js/tour.js"></script>
+<!-- Include the jQuery Mobile library -->
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!-- <script src="../js/player.js"></script> -->
+<script type="text/javascript">
+$(document).ready(function() { 
+	alert('Hi I am ready!');	
+});
+
+</script>
+</head>
+<body>
+<div data-role="page" id="pageone">
+
+  <div data-role="header">
+   <h1>ADK Tournament Manager</h1>
+  </div>
+
+<div data-role="main" class="ui-content">
+       	<div>
+       	<div class="ui-field-contain">
+        	<label for="search">Player ID :</label>
+        	<input type="search" name="search" id="search" placeholder="Search by Player ID...">
+       </div>
+       <input class="ui-btn ui-btn-inline" type="submit" onclick="getPlayer()" value="Submit">
+      	
+      		<p>Player Details</p>
+            <p class="play_id">Player ID : </p>
+            <p class="play_playerName">Player Name : </p>
+            <p class="play_fatherName">Player's Father Name : </p>
+            <p class="play_motherName">Player's Mother Name : </p>
+            <p class="play_occupation">Player ID : </p>
+            <p class="play_dob">Date of Birth : </p>
+            <p class="play_dateOfJoining">Player Date of Joining : </p>
+            <p class="play_mobileNumber">Mobile Number : </p>
+            <p class="play_address">Address : </p>
+            <p class="play_age">Player Age : </p>
+            <p class="play_playerCode">Player Code : </p>
+            <a href="#pagetwo">Go to Page two</a>
+            <a href="../index.html">Go to Dashboard</a>
+        </div>
+  </div>
+  
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+
+</div>
+
+<div data-role="page" id="pagetwo">
+
+  <div data-role="header">
+    <h1>Welcome To My Homepage</h1>
+  </div>
+
+<div data-role="main" class="ui-content">
+    <div>
+            <p class="greeting-id">The ID is </p>
+            <p class="greeting-content">The content is </p>
+            <a href="#pageone">Go to Page One</a>
+        </div>
+  </div>
+  
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+
+</div>
+</body>
+</html>

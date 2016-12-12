@@ -5,11 +5,15 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryHelper {
-	private final static SessionFactory sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+	private static SessionFactory sessionFactory = null; 
 //	private final static SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	
 	
 	public static SessionFactory getSessionFactory(){
+		if(sessionFactory == null){
+				sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+			return sessionFactory;
+		}
 		return sessionFactory;
 	}
 }

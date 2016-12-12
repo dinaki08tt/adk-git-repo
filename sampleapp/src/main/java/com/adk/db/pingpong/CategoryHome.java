@@ -7,6 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -154,4 +155,15 @@ public class CategoryHome {
 		tx.commit();
 		return c;	
 	}
+
+	public List<Category> findAll() {
+		String hql = "from Category c";
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Query query = s.createQuery(hql);
+		List results = query.list();
+		tx.commit();
+		return results;
+	}
+	
 }

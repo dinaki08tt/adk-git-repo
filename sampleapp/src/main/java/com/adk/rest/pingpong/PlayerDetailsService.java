@@ -15,7 +15,7 @@ public class PlayerDetailsService {
 
 	@GET
 	@Path("/get/{id}")
-	@Produces({"application/xml", "application/json"})
+	@Produces({"application/json"})
 	public PlayerDetails getPlayerById(@PathParam("id") String id){
 		PlayerDetailsHome dao = new PlayerDetailsHome();
 		return dao.findById(Integer.parseInt(id));

@@ -22,7 +22,7 @@ public class MainRun {
 		//create tournament
 //		createTournament();
 //		createEvent();
-//		createEvents();
+		createEvents();
 		
 		//populate Players to DB
 //		ReadExcel.populatePlayersToDB();

@@ -97,6 +97,9 @@ CREATE TABLE `Tournament` (
 				PRIMARY KEY (`tour_id`)
 );
 
+
+ALTER TABLE `Tournament` ADD UNIQUE (`tour_name`);
+
 ALTER TABLE `Tournament` DROP `category_id`;
 ALTER TABLE `Tournament` ADD `event_id` int NOT NULL;
 ALTER TABLE `Tournament` DROP `event_id`;
