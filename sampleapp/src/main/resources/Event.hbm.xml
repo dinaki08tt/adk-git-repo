@@ -17,6 +17,9 @@
         <property name="eventName" type="string">
             <column name="event_name" length="100" not-null="true" unique="true" />
         </property>
+        <property name="eventDate" type="date">
+            <column name="event_date" length="10" not-null="true" />
+        </property>
         <set name="groupMatchesDetailses" table="group_matches_details" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="event_id" not-null="true" />

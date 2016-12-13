@@ -302,13 +302,13 @@ public class WriteFile {
 	
 	
 	
-	private static PlayerDetailsHome pdao = new PlayerDetailsHome();
+	private static PlayerDetailsHome pdao = PlayerDetailsHome.getInstance();
 	private static String getPlayerName(Integer player1Id) {
 		PlayerDetails p = pdao.findById(player1Id);
 		return p.getPlayerName();
 	}
 	
-	private static GroupMatchesDetailsHome gDao = new GroupMatchesDetailsHome();
+	private static GroupMatchesDetailsHome gDao = GroupMatchesDetailsHome.getInstance();
 	
 	/**
 	 * 

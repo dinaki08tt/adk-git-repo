@@ -40,6 +40,19 @@ public class GroupMatchesDetailsHome {
 		}
 	}
 
+
+	private static GroupMatchesDetailsHome instance = null;
+
+	public static GroupMatchesDetailsHome getInstance(){
+		if(instance == null){
+			instance = new GroupMatchesDetailsHome();
+		}
+		return instance;
+	}
+
+	private GroupMatchesDetailsHome(){}
+	
+	
 	public void persist(GroupMatchesDetails transientInstance) {
 		log.debug("persisting GroupMatchesDetails instance");
 		try {

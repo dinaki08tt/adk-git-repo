@@ -39,18 +39,18 @@ public class MainRun {
 	}
 	
 	private static List<Event> getAllEventsForTour() {
-		TournamentHome tdao = new TournamentHome();
+		TournamentHome tdao = TournamentHome.getInstance();
 		Tournament t = tdao.findTourByName("Recreational Tournament");
-		EventHome edao = new EventHome();
+		EventHome edao = EventHome.getInstance();
 		List<Event> list = edao.findByTournament(t);
 		return list;
 	}
 
 	private static void createEvent() {
-		TournamentHome tdao = new TournamentHome();
+		TournamentHome tdao = TournamentHome.getInstance();
 		Tournament t = tdao.findTourByName("Recreational Tournament");
-		EventHome edao = new EventHome();
-		CategoryHome cdao = new CategoryHome();
+		EventHome edao = EventHome.getInstance();
+		CategoryHome cdao = CategoryHome.getInstance();
 		Event event = new Event();
 		Category c = cdao.findCategory("mini cadet", "male", "singles");
 		event.setCategory(c);
@@ -63,10 +63,10 @@ public class MainRun {
 	
 
 	private static void createEvents() {
-		TournamentHome tdao = new TournamentHome();
+		TournamentHome tdao = TournamentHome.getInstance();
 		Tournament t = tdao.findTourByName("Recreational Tournament");
-		EventHome edao = new EventHome();
-		CategoryHome cdao = new CategoryHome();
+		EventHome edao = EventHome.getInstance();
+		CategoryHome cdao = CategoryHome.getInstance();
 		Event event = new Event();
 		Category c = cdao.findCategory("mini cadet", "male", "singles");
 		event.setCategory(c);
@@ -85,7 +85,7 @@ public class MainRun {
 	}
 
 	public static void createTournament() {
-		TournamentHome tdao = new TournamentHome();
+		TournamentHome tdao = TournamentHome.getInstance();
 		Tournament t = new Tournament();
 		t.setOrganizer("ADKTTA");
 		t.setTourName("Recreational Tournament");
@@ -94,7 +94,7 @@ public class MainRun {
 	}
 	
 	private static void createCategory(){
-		CategoryHome cdao = new CategoryHome();
+		CategoryHome cdao = CategoryHome.getInstance();
 		Category c = new Category();
 		c.setCategoryName("Non Medalist");
 		c.setGender("mixed");
@@ -104,7 +104,7 @@ public class MainRun {
 	
 
 	private static void createAllCategory() {
-		CategoryHome cdao = new CategoryHome();
+		CategoryHome cdao = CategoryHome.getInstance();
 		Category c = new Category();
 		c.setCategoryName("mini cadet");
 		c.setGender("male");

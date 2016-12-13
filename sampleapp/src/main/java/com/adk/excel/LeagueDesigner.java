@@ -69,16 +69,16 @@ public class LeagueDesigner {
 	
 	public static void createGroupMatchForEvent(String eventName){
 
-		EventHome eventDao = new EventHome();
+		EventHome eventDao = EventHome.getInstance();
 		Event eventPojo = eventDao.findByName(eventName);
 		
 		
 		Date matchdate = new Date();
 		List<Group> grps = designGroups();
-		PlayerDetailsHome pDao = new PlayerDetailsHome();
-		TournamentHome tourDao = new TournamentHome();
+		PlayerDetailsHome pDao = PlayerDetailsHome.getInstance();
+		TournamentHome tourDao = TournamentHome.getInstance();
 		Tournament t = tourDao.findById(1); 
-		GroupMatchesDetailsHome grpDao = new GroupMatchesDetailsHome();
+		GroupMatchesDetailsHome grpDao = GroupMatchesDetailsHome.getInstance();
 
 		Iterator<Group> itrGrp = grps.iterator();
 		int matchId = 0;

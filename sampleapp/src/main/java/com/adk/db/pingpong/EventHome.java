@@ -35,6 +35,17 @@ public class EventHome {
 		}
 	}
 
+	private static EventHome instance = null;
+
+	public static EventHome getInstance(){
+		if(instance == null){
+			instance = new EventHome();
+		}
+		return instance;
+	}
+
+	private EventHome(){}
+	
 	public void persist(Event transientInstance) {
 		log.debug("persisting Event instance");
 		try {

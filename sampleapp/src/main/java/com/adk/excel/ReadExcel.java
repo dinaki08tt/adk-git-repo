@@ -208,7 +208,7 @@ public class ReadExcel
 	}
 
 	public static void populatePlayersToDB() {
-		PlayerDetailsHome dao = new PlayerDetailsHome();
+		PlayerDetailsHome dao = PlayerDetailsHome.getInstance();
 		
 		try {
 			List<Player> pls = readPlayerList();

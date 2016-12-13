@@ -22,7 +22,7 @@ public class GroupMatchesService {
 	@Path("/get/{id}")
 	@Produces({"application/xml", "application/json"})
 	public GroupMatchesDetails getGroupMatchesId(@PathParam("id") String id){
-		GroupMatchesDetailsHome dao = new GroupMatchesDetailsHome();
+		GroupMatchesDetailsHome dao = GroupMatchesDetailsHome.getInstance();
 		GroupMatchesDetails gmd = dao.findById(Integer.parseInt(id)); 
 		return gmd;
 	}
@@ -31,9 +31,9 @@ public class GroupMatchesService {
 	@Path("/popluate/{id}")
 	@Produces({"application/xml", "application/json"})
 	public GroupMatchesDetails populateMatcheScore(@PathParam("id") String id){
-		GroupMatchesDetailsHome dao = new GroupMatchesDetailsHome();
+		GroupMatchesDetailsHome dao = GroupMatchesDetailsHome.getInstance();
 		GroupMatchesDetails match = dao.findMatchByMatchId("1",12);
-		GameScoreHome gameDao = new GameScoreHome();
+		GameScoreHome gameDao = GameScoreHome.getInstance();
 		 Set games = new HashSet();
 		GameScore game = new GameScore();
 		 game.setMatchId(12);
@@ -58,7 +58,7 @@ public class GroupMatchesService {
 		 return dao.update(match);
 	}
 	
-	private static PlayerDetailsHome pdao = new PlayerDetailsHome();
+	private static PlayerDetailsHome pdao = PlayerDetailsHome.getInstance();
 	private static PlayerDetails getPlayer(Integer player1Id) {
 		PlayerDetails p = pdao.findById(player1Id);
 		return p;
@@ -66,9 +66,9 @@ public class GroupMatchesService {
 	
 	public static void main(String args[]){
 		
-		GroupMatchesDetailsHome dao = new GroupMatchesDetailsHome();
+		GroupMatchesDetailsHome dao = GroupMatchesDetailsHome.getInstance();
 		GroupMatchesDetails match = dao.findMatchByMatchId("1",7);
-		GameScoreHome gameDao = new GameScoreHome();
+		GameScoreHome gameDao = GameScoreHome.getInstance();
 		GameScore game = new GameScore();
 		game.setGroupMatchesDetails(match); 
 		game.setMatchId(12);

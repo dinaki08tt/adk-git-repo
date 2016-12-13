@@ -37,7 +37,18 @@ public class CategoryHome {
 			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
 		}
 	}
+	
+	private static CategoryHome instance = null;
 
+	public static CategoryHome getInstance(){
+		if(instance == null){
+			instance = new CategoryHome();
+		}
+		return instance;
+	}
+
+	private CategoryHome(){}
+	
 	public void persist(Category transientInstance) {
 		log.debug("persisting Category instance");
 		try {

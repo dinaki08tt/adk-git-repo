@@ -36,6 +36,18 @@ public class PlayerDetailsHome {
 		}
 	}
 
+
+	private static PlayerDetailsHome instance = null;
+
+	public static PlayerDetailsHome getInstance(){
+		if(instance == null){
+			instance = new PlayerDetailsHome();
+		}
+		return instance;
+	}
+
+	private PlayerDetailsHome(){}
+	
 	public void persist(PlayerDetails transientInstance) {
 		log.debug("persisting PlayerDetails instance");
 		try {

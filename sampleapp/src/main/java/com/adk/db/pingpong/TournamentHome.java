@@ -1,6 +1,7 @@
 package com.adk.db.pingpong;
 // Generated Dec 5, 2016 11:55:24 AM by Hibernate Tools 4.3.1.Final
 
+import java.util.Date;
 import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
@@ -36,6 +37,18 @@ public class TournamentHome {
 		}
 	}
 
+	private static TournamentHome instance = null;
+
+	public static TournamentHome getInstance(){
+		if(instance == null){
+			instance = new TournamentHome();
+		}
+		return instance;
+	}
+
+	private TournamentHome(){}
+
+	
 	public void persist(Tournament transientInstance) {
 		log.debug("persisting Tournament instance");
 		try {
@@ -155,5 +168,22 @@ public class TournamentHome {
 		List results = query.list();
 		tx.commit();
 		return results;
+	}
+
+	public Tournament findByDate(Date datee) {
+		
+		Session s = sessionFactory.getCurrentSession();
+		Transaction tx = s.beginTransaction();
+		Criteria cr = s.createCriteria(Tournament.class);
+		cr.add(Restrictions.eq("tourDate", datee));
+		List list = cr.list();
+		Tournament t = null;
+		if(list != null && list.size()>0){
+			t = (Tournament) list.get(0);
+		}else{
+			throw new IllegalStateException("No Records found for Tournament Date = "+ datee);
+		}
+		tx.commit();
+		return t;
 	}
 }

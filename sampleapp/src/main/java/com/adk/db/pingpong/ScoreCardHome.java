@@ -29,6 +29,17 @@ public class ScoreCardHome {
 		}
 	}
 
+	private static ScoreCardHome instance = null;
+
+	public static ScoreCardHome getInstance(){
+		if(instance == null){
+			instance = new ScoreCardHome();
+		}
+		return instance;
+	}
+
+	private ScoreCardHome(){}
+	
 	public void persist(ScoreCard transientInstance) {
 		log.debug("persisting ScoreCard instance");
 		try {

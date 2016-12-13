@@ -498,7 +498,7 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 	}
 	
 	
-	static PlayerDetailsHome pdao = new PlayerDetailsHome();
+	static PlayerDetailsHome pdao = PlayerDetailsHome.getInstance();
 	private static String getPlayerName(Integer player1Id) {
 		PlayerDetails p = pdao.findById(player1Id);
 		return p.getPlayerName();
@@ -594,7 +594,7 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 	
 	private static List<GroupMatchesDetails> findAllGroupsByGroupName(String groupName, Event e) {
 		// TODO Auto-generated method stub
-		GroupMatchesDetailsHome gDao = new GroupMatchesDetailsHome();
+		GroupMatchesDetailsHome gDao = GroupMatchesDetailsHome.getInstance();
 		List<GroupMatchesDetails> all = gDao.findGroupsByGroupNameAndEvent(groupName, e.getEventId());
 		return all;
 	}
@@ -605,7 +605,7 @@ public static void replacePara(XWPFDocument docx, String categoryName, String ma
 	 * @return
 	 */
 	private static List<String> listDistinctGroupsByEvent(Event e) {
-		GroupMatchesDetailsHome gDao = new GroupMatchesDetailsHome();
+		GroupMatchesDetailsHome gDao = GroupMatchesDetailsHome.getInstance();
 		List<String> list = gDao.findDistinctGroupNameByEventid(e.getEventId());
 		return list;
 	}

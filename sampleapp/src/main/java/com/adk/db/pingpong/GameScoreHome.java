@@ -33,6 +33,17 @@ public class GameScoreHome {
 		}
 	}
 
+	private static GameScoreHome instance = null;
+
+	public static GameScoreHome getInstance(){
+		if(instance == null){
+			instance = new GameScoreHome();
+		}
+		return instance;
+	}
+
+	private GameScoreHome(){}
+	
 	public void persist(GameScore transientInstance) {
 		log.debug("persisting GameScore instance");
 		try {

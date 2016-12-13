@@ -1,6 +1,7 @@
 package com.adk.db.pingpong;
 // Generated Dec 5, 2016 11:55:23 AM by Hibernate Tools 4.3.1.Final
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +24,7 @@ public class Tournament implements java.io.Serializable {
 	private String tourName;
 	private String venue;
 	private String organizer;
+	private Date tourDate;
 	@XmlElement(name="events")
 	private Set events = new HashSet(0);
 
@@ -66,6 +68,14 @@ public class Tournament implements java.io.Serializable {
 
 	public void setOrganizer(String organizer) {
 		this.organizer = organizer;
+	}
+	
+	public Date getTourDate() {
+		return tourDate;
+	}
+
+	public void setTourDate(Date tourDate) {
+		this.tourDate = tourDate;
 	}
 
 	public Set getEvents() {

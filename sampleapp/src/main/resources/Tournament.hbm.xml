@@ -17,6 +17,9 @@
         <property name="organizer" type="string">
             <column name="organizer" length="100" />
         </property>
+        <property name="tourDate" type="date">
+            <column name="tour_date" length="10" not-null="true" />
+        </property>
         <set name="events" table="event" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="tour_id" not-null="true" />
