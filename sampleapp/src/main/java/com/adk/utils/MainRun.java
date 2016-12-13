@@ -18,11 +18,11 @@ public class MainRun {
 	public static void main(String args[]){
 	//create category
 //		createCategory();
-//		createAllCategory();
+		CategoryHome.getInstance().createAllCategory();
 		//create tournament
 //		createTournament();
 //		createEvent();
-		createEvents();
+//		createEvents();
 		
 		//populate Players to DB
 //		ReadExcel.populatePlayersToDB();
@@ -103,161 +103,6 @@ public class MainRun {
 	}
 	
 
-	private static void createAllCategory() {
-		CategoryHome cdao = CategoryHome.getInstance();
-		Category c = new Category();
-		c.setCategoryName("mini cadet");
-		c.setGender("male");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("mini cadet");
-		c.setGender("male");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("mini cadet");
-		c.setMatchType("singles");
-		c.setGender("female");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("mini cadet");
-		c.setMatchType("doubles");
-		c.setGender("female");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("cadet");
-		c.setGender("male");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("cadet");
-		c.setGender("male");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("cadet");
-		c.setGender("female");
-		c.setMatchType("singles");
-		cdao.persist(c);
-
-		c = new Category();
-		c.setCategoryName("cadet");
-		c.setGender("female");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Sub Juniors");
-		c.setGender("male");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Sub Juniors");
-		c.setGender("male");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		
-		c = new Category();
-		c.setCategoryName("Sub Juniors");
-		c.setGender("female");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Sub Juniors");
-		c.setGender("female");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Juniors");
-		c.setGender("male");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Juniors");
-		c.setGender("male");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-
-		c = new Category();
-		c.setCategoryName("Juniors");
-		c.setGender("female");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Juniors");
-		c.setGender("female");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Youth");
-		c.setGender("male");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Youth");
-		c.setGender("male");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Youth");
-		c.setGender("female");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Youth");
-		c.setGender("female");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Mens");
-		c.setGender("male");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Mens");
-		c.setGender("male");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Womens");
-		c.setGender("female");
-		c.setMatchType("singles");
-		cdao.persist(c);
-		
-		c = new Category();
-		c.setCategoryName("Womens");
-		c.setGender("female");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-
-		c = new Category();
-		c.setCategoryName("Seniors");
-		c.setGender("mixed");
-		c.setMatchType("doubles");
-		cdao.persist(c);
-		
-	}
+	
 	
 }

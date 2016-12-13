@@ -1,7 +1,9 @@
-	
+var SERVICE_URL = "http://localhost:8080/sampleapp/rest";
+var FORWARD_SLASH = "/";
+
 	function getCombos(){
 		
-		var geturl = "http://localhost:8080/sampleapp/rest/tour/category/getAll";
+		var geturl = SERVICE_URL+"/tour/category/getAll";
 		
 		$.ajax({
 		    type: "GET",
@@ -24,7 +26,7 @@
 		});
 		$("#category").trigger("change");
 
-		geturl = "http://localhost:8080/sampleapp/rest/tour/getAll";
+		geturl = SERVICE_URL+"/tour/getAll";
 		$.ajax({
 		    type: "GET",
 		    url: geturl,
@@ -52,9 +54,10 @@ function createTour(){
 	var name = $("#tourName").val();
 	var orgName = $("#orgName").val();
 	var venue = $("#venue").val();
+	var date = $("#tday").val();
 	
-	///create/{tourName}/{org}/{venue}
-	var geturl = "http://localhost:8080/sampleapp/rest/tour/create/"+name+"/"+orgName+"/"+venue;
+	///create/{tourName}/{org}/{venue}/{date}
+	var geturl = SERVICE_URL+"/tour/create/"+name+FORWARD_SLASH+orgName+FORWARD_SLASH+venue+FORWARD_SLASH+date;
 	
 	$.ajax({
 	    type: "GET",
@@ -81,7 +84,7 @@ function createTour(){
 
 function getPlayer(){
 	var id = $("#search").val()
-	var geturl = "http://localhost:8080/sampleapp/rest/player/get/"+id;
+	var geturl = SERVICE_URL+"/player/get/"+id;
 	
 	$.ajax({
         url: geturl
@@ -101,3 +104,29 @@ function getPlayer(){
 }
 
 
+function createEvents(){
+	var eventName = $('#eventName').val();
+	var gender = $('input[name=gender]:checked').val();
+	var matchType = $('input[name=match_type]:checked').val();
+	var eventDate = $('#eday').val();
+	var venue = $('#venue').val();
+	
+	//alert("gender: "+gender+" match: "+matchType+" eventDate: "+eventDate+" venue: "+venue);
+	
+
+//	/event/create/{name}/{matchType}/{gender}/{venue}/{date}
+var geturl = SERVICE_URL+"/event/create/"+eventName+FORWARD_SLASH+matchType+FORWARD_SLASH+gender+FORWARD_SLASH+venue+FORWARD_SLASH+eventDate;
+	
+	$.ajax({
+	    type: "GET",
+	    url: geturl,
+	    success: function(data, status, xhr) {
+	     	alert(data.eventId);
+	     	$('#create_msg').text("Event Created succesfully");
+	    },
+	    error: function(xhr, status, error) {
+	        console.log(xhr+":"+status+":"+error);
+	        $("#error_event").text("Duplicate Event Name");
+	    }
+	});
+}

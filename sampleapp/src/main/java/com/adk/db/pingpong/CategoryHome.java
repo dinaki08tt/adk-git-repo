@@ -177,4 +177,159 @@ public class CategoryHome {
 		return results;
 	}
 	
+	public void createAllCategory() {
+		Category c = new Category();
+		c.setCategoryName("mini cadet");
+		c.setGender("male");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("mini cadet");
+		c.setGender("male");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("mini cadet");
+		c.setMatchType("singles");
+		c.setGender("female");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("mini cadet");
+		c.setMatchType("doubles");
+		c.setGender("female");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("cadet");
+		c.setGender("male");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("cadet");
+		c.setGender("male");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("cadet");
+		c.setGender("female");
+		c.setMatchType("singles");
+		persist(c);
+
+		c = new Category();
+		c.setCategoryName("cadet");
+		c.setGender("female");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Sub Juniors");
+		c.setGender("male");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Sub Juniors");
+		c.setGender("male");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		
+		c = new Category();
+		c.setCategoryName("Sub Juniors");
+		c.setGender("female");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Sub Juniors");
+		c.setGender("female");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Juniors");
+		c.setGender("male");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Juniors");
+		c.setGender("male");
+		c.setMatchType("doubles");
+		persist(c);
+		
+
+		c = new Category();
+		c.setCategoryName("Juniors");
+		c.setGender("female");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Juniors");
+		c.setGender("female");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Youth");
+		c.setGender("male");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Youth");
+		c.setGender("male");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Youth");
+		c.setGender("female");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Youth");
+		c.setGender("female");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Mens");
+		c.setGender("male");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Mens");
+		c.setGender("male");
+		c.setMatchType("doubles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Womens");
+		c.setGender("female");
+		c.setMatchType("singles");
+		persist(c);
+		
+		c = new Category();
+		c.setCategoryName("Womens");
+		c.setGender("female");
+		c.setMatchType("doubles");
+		persist(c);
+		
+
+		c = new Category();
+		c.setCategoryName("Seniors");
+		c.setGender("mixed");
+		c.setMatchType("doubles");
+		persist(c);
+		
+	}
 }

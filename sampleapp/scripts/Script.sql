@@ -97,6 +97,7 @@ CREATE TABLE `Tournament` (
 				PRIMARY KEY (`tour_id`)
 );
 
+ALTER TABLE `Tournament` ADD `tour_date` date NOT NULL;
 
 ALTER TABLE `Tournament` ADD UNIQUE (`tour_name`);
 
@@ -125,6 +126,8 @@ CREATE TABLE `Event` (
 );
 
 
+ALTER TABLE `Event` ADD `event_date` date NOT NULL;
+
 ALTER TABLE `Event` ADD `tour_id` int NOT NULL;
 
 ALTER TABLE `Event` ADD UNIQUE (`event_name`);
@@ -146,4 +149,5 @@ TRUNCATE TABLE `game_score`;
 
 TRUNCATE TABLE `score_card`;
 
+drop database `adktm`;
 

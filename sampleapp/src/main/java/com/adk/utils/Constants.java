@@ -11,7 +11,7 @@ public class Constants {
 	public static File OUTPUT_DIR = new File(OUTPUT_FOLDER);
 	
 	
-	public String getEventName(String categoryName, String matchType, String gender, Integer categoryId, Integer tourId){
+	public static String getEventName(String categoryName, String matchType, String gender, Integer categoryId, Integer tourId){
 		final String seperator = "-";
 		String result = categoryName+seperator+matchType+seperator+gender+seperator+categoryId+seperator+tourId;
 		return result;

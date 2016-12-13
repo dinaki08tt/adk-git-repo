@@ -3,6 +3,7 @@ package com.adk.web;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.adk.db.pingpong.CategoryHome;
 import com.adk.db.util.SessionFactoryHelper;
 
 /**
@@ -31,6 +32,7 @@ public class DBStartupListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent arg0)  { 
     	try{
 			SessionFactoryHelper.getSessionFactory();
+//			CategoryHome.getInstance().createAllCategory();
 			System.out.println("Session Factory initialized");
     	}catch(Exception e){
 			e.printStackTrace();

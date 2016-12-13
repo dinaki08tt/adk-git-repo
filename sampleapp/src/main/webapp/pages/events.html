@@ -29,28 +29,46 @@
   </div>
 	<h2>Create Events</h2>
 	<div data-role="main" class="ui-content">
-	<input class="ui-btn ui-btn-inline" type="submit" onclick="getCombos()" value="Load Tour">
+<!-- 	<input class="ui-btn ui-btn-inline" type="submit" onclick="getCombos()" value="Load Tour"> -->
 		<div class="ui-field-contain">
-        	<label for="eventName">Event Name:</label>
-        	<input type="text" name="eventName" id="eventName">       
+        	
+      
+    <fieldset data-role="controlgroup">
+    <legend>Choose your gender:</legend>
+      <label for="male">Male</label>
+      <input type="radio" name="gender" id="male" value="male">
+      <label for="female">Female</label>
+      <input type="radio" name="gender" id="female" value="female">
+      <label for="mixed">Both</label>
+      <input type="radio" name="gender" id="both" value="both"> 
+  	</fieldset>
+    
+    <fieldset data-role="controlgroup">
+    <legend>Choose match type:</legend>
+      <label for="singles">Singles</label>
+      <input type="radio" name="match_type" id="singles" value="Singles">
+      <label for="doubles">Doubles</label>
+      <input type="radio" name="match_type" id="doubles" value="Doubles">
+      <label for="team">Team</label>
+      <input type="radio" name="match_type" id="team" value="Team"> 
+  	</fieldset>
+      
+    	<label for="eventName">Event Name:</label>
+        <input type="text" name="eventName" id="eventName">       
+        
         <label for="eday">Event Date :</label>
         <input type="date" name="eday" id="eday">
         
         <label for="venue">Venue :</label>
         <input type="text" name="venue" id="venue">
         
-      <fieldset class="ui-field-contain">
-        <label for="category">Select Category</label>
-        <select name="category" id="category" data-native-menu="false">
-        </select>
-      </fieldset>
-      
-      <fieldset class="ui-field-contain">
-        <label for="tour">Select Tournament</label>
-        <select name="tour" id="tour" data-native-menu="false">
-        </select>
-      </fieldset>
-       </div>
+        <label for="create">Click to Create the Event:</label>
+        <input type="submit" id="create" data-inline="true" onclick="createEvents()" value="create"> 
+    </div>
+    <div>
+    	<p id="create_msg"></p>
+    	<p id="error_event"></p>
+    </div>
        <a href="../index.html">Go to Dashboard</a>	
   	</div>
   <div data-role="footer">
