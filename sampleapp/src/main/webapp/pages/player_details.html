@@ -15,7 +15,7 @@
 <script src="../js/tour.js"></script>
 <!-- Include the jQuery Mobile library -->
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<!-- <script src="../js/player.js"></script> -->
+
 <script type="text/javascript">
 $(document).ready(function() { 
 	//alert('Hi I am ready!');	
@@ -25,10 +25,16 @@ $(document).ready(function() {
 </head>
 <body>
 <div data-role="page" id="pageone">
-
-  <div data-role="header">
-   <h1>ADK Tournament Manager</h1>
-  </div>
+<header data-role="header" data-position="fixed">
+<h1>ADK Table Tennis Academy</h1>
+<div data-role="navbar">
+<ul>
+<li><a href="pages/index.html" class="ui-btn-active" data-icon="home" data-theme="b">Home</a></li>
+<li><a href="#photos" data-icon="star" data-theme="b">Photo Gallery</a></li>
+<li><a href="pages/centers.html" data-icon="grid" data-theme="b">Coaching Centers</a></li>
+</ul>
+</div>
+</header>
 
 <div data-role="main" class="ui-content">
        	<div>
@@ -51,7 +57,7 @@ $(document).ready(function() {
             <p class="play_age">Player Age : </p>
             <p class="play_playerCode">Player Code : </p>
             <a href="#pagetwo">Go to Page two</a>
-            <a href="../index.html">Go to Dashboard</a>
+            <a href="index.html">Go to Dashboard</a>
         </div>
   </div>
   
@@ -75,9 +81,17 @@ $(document).ready(function() {
         </div>
   </div>
   
-  <div data-role="footer">
-    <h1>Footer Text</h1>
-  </div>
+<div data-role="footer" data-position="fixed">
+
+<div data-role="navbar">
+<ul>
+<li><a href="mailto:dinaki08tt@gmail.com" class="ui-btn-active" data-icon="mail" data-theme="b">Email</a></li>
+<li><a href="tel:919176158249" data-icon="phone" data-theme="b">Call me</a></li>
+<li><a href="whatsapp://send?text=ADK Table Tennis Academy!" data-icon="phone" data-theme="b" data-action="share/whatsapp/share">Whatsapp</a></li>
+</ul>
+</div>
+<p align="center">ADK Table Tennis Academy is affiliated to Coimbatore District Table Tennis Association</p>
+</div>
 
 </div>
 </body>
