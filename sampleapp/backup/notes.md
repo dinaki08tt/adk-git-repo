@@ -1,0 +1,1 @@
+http://www.benchresources.net/jersey-2-x-web-service-integrating-with-spring-security/

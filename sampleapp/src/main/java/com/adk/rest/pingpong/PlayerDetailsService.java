@@ -18,7 +18,8 @@ public class PlayerDetailsService {
 	@GET
 	@Path("/get/{id}")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces({"application/json"})
+//	@Produces({"application/json"})
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public PlayerDetails getPlayerById(@PathParam("id") String id){
 		PlayerDetailsHome dao = PlayerDetailsHome.getInstance();
 		return dao.findById(Integer.parseInt(id));
