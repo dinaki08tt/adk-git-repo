@@ -151,3 +151,31 @@ TRUNCATE TABLE `score_card`;
 
 drop database `adktm`;
 
+
+
+
+
+//USERS
+create table users (
+    username varchar(50) not null primary key,
+    password varchar(60) not null,
+    enabled boolean not null
+) engine = InnoDb;
+
+//AUTHORITIES
+create table authorities (
+    username varchar(50) not null,
+    authority varchar(50) not null,
+    foreign key (username) references users (username),
+    unique index authorities_idx_1 (username, authority)
+) engine = InnoDb;
+
+INSERT INTO `users`(`username`, `password`, `enabled`) VALUES ('Arun', '$2a$10$BwyjwGRWc4gMk2Y1e2jzie.FVYrfgxV0.aHgdU1VM6E.Rf0ZYoaWa', 1);
+INSERT INTO `users`(`username`, `password`, `enabled`) VALUES ('Jeremy', '$2a$10$EHmzwTcEFS1IUZ.hhsMw.uZvG2uwH7fOS1nh/fcIiAvmXg3LwdVP.', 1);
+INSERT INTO `users`(`username`, `password`, `enabled`) VALUES ('Jing', '$2a$10$twiIh66bjFBWBYZPWOrc1uS/KRCdT61Z5wFdpJGdeHwY2HeCZ.J.a', 1);
+INSERT INTO `users`(`username`, `password`, `enabled`) VALUES ('Rest', '$2a$10$twiIh66bjFBWBYZPWOrc1uS/KRCdT61Z5wFdpJGdeHwY2HeCZ.J.a', 1);
+
+INSERT INTO authorities (username, authority) VALUES ('Arun', 'ROLE_ADMIN');
+INSERT INTO authorities (username, authority) VALUES ('Jeremy', 'ROLE_USER');
+INSERT INTO authorities (username, authority) VALUES ('Jing', 'ROLE_USER');
+INSERT INTO authorities (username, authority) VALUES ('Rest', 'ROLE_REST');
