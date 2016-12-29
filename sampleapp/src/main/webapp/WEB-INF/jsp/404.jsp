@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,45 +42,55 @@
 
 <link rel="stylesheet" type="text/css" href="styles/styles.css">
 
-<meta charset="ISO-8859-1">
-<title>ADK Table Tennis Academy</title>
+<script type="text/javascript">
+// $(document).ready(function() { /*code here */ 
+	
+	
+// 	$().headerOnAllPages();
+// });
+
+
+// $.fn.headerOnAllPages = function() {
+//     var theHeader = $('#constantheader-wrapper').html();
+//     var allPages = $('div[data-role="page"]');
+
+//     for (var i = 1; i < allPages.length; i++) {
+//         allPages[i].innerHTML = theHeader + allPages[i].innerHTML;
+//     }
+// };
+</script>
+
 </head>
 <body>
-
 <div data-role="page" id="pageone">
 <header data-role="header" data-position="fixed">
 <h1>ADK Table Tennis Academy</h1>
 <div data-role="navbar">
 <ul>
-<li><a href="../index.html" class="ui-btn-active" data-icon="home" data-theme="b">Home</a></li>
-<li><a href="photogallery.html" data-icon="star" data-theme="b">Photo Gallery</a></li>
-<li><a href="centers.html" data-icon="grid" data-theme="b">Coaching Centers</a></li>
+<li><a href="static/home" class="ui-btn-active" data-icon="home" data-theme="b">Home</a></li>
+<li><a href="photos" data-icon="star" data-theme="b">Photo Gallery</a></li>
+<li><a href="centers" data-icon="grid" data-theme="b">Coaching Centers</a></li>
 </ul>
 </div>
 </header>
  
 <div data-role="main" class="ui-content">
-	<h2>Location</h2>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7832.751380787003!2d77.01131167432182!3d11.010413518652006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8577c1f9d90e1%3A0xedd17dae446fd652!2sG.V.+Residency%2C+Uppilipalayam%2C+Coimbatore%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1481866182553" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 	<div>
-		<h2><p>Contact</p></h2>
-		<p><a href="tel:919176158249" id="callme" data-role="button" data-inline="true" data-theme="b" data-icon="phone">Call in-charge</a></p>
+		<h1>Ball landed outside the Table. Check out my <a href="http://tt-india.blogspot.in">Blog</a></h1>
 	</div>
 </div>
   
- 
 <div data-role="footer" data-position="fixed">
-
 <div data-role="navbar">
 <ul>
-<li><a href="mailto:dinaki08tt@gmail.com" class="ui-btn-active" data-icon="mail" data-theme="b">Email</a></li>
 <li><a href="tel:919176158249" data-icon="phone" data-theme="b">Call me</a></li>
-<li><a href="whatsapp://send?text=ADK Table Tennis Academy!" data-icon="phone" data-theme="b" data-action="share/whatsapp/share">Whatsapp</a></li>
+<li><a href="mailto:dinaki08tt@gmail.com" class="ui-btn-active" data-icon="mail" data-theme="b">Email</a></li>
+<li><a href="whatsapp://send?text=www.adktta.com" data-icon="phone" data-theme="b" data-action="share/whatsapp/share">Whatsapp</a></li>
 </ul>
 </div>
 <p align="center">ADK Table Tennis Academy is affiliated to Coimbatore District Table Tennis Association</p>
 </div>
-
 </div>
+
 </body>
 </html>

@@ -3,7 +3,9 @@ package com.adk.web;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.adk.db.pingpong.AuthoritiesHome;
 import com.adk.db.pingpong.CategoryHome;
+import com.adk.db.pingpong.UsersHome;
 import com.adk.db.util.SessionFactoryHelper;
 
 /**
@@ -33,6 +35,12 @@ public class DBStartupListener implements ServletContextListener {
     	try{
 			SessionFactoryHelper.getSessionFactory();
 //			CategoryHome.getInstance().createAllCategory();
+			UsersHome udao = UsersHome.getInstance();
+			AuthoritiesHome adao = AuthoritiesHome.getInstance();
+			if(!udao.isInitialLoaded()){
+				udao.loadInitialUsers();
+				adao.loadInitialRoles();
+			}
 			System.out.println("Session Factory initialized");
     	}catch(Exception e){
 			e.printStackTrace();

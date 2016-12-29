@@ -177,6 +177,15 @@ public class CategoryHome {
 		return results;
 	}
 	
+	public Boolean isInitialLoaded(){
+		try{
+			findById(1);
+		}catch(Exception e){
+			return false;
+		}
+		return true;
+	}
+	
 	public void createAllCategory() {
 		Category c = new Category();
 		c.setCategoryName("mini cadet");

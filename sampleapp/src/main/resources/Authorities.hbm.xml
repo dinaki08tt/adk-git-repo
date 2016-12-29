@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 24, 2016 8:57:26 AM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="com.adk.db.pingpong.Authorities" table="authorities" optimistic-lock="version">
+        <composite-id name="id" class="com.adk.db.pingpong.AuthoritiesId">
+            <key-property name="username" type="string">
+                <column name="username" length="50" />
+            </key-property>
+            <key-property name="authority" type="string">
+                <column name="authority" length="50" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="users" class="com.adk.db.pingpong.Users" update="false" insert="false" fetch="select">
+            <column name="username" length="50" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

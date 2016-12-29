@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,25 +68,24 @@
 <h1>ADK Table Tennis Academy</h1>
 <div data-role="navbar">
 <ul>
-<li><a href="index.html" class="ui-btn-active" data-icon="home" data-theme="b">Home</a></li>
-<li><a href="#photos" data-icon="star" data-theme="b">Photo Gallery</a></li>
-<li><a href="pages/centers.html" data-icon="grid" data-theme="b">Coaching Centers</a></li>
+<li><a href="static/home" class="ui-btn-active" data-icon="home" data-theme="b">Home</a></li>
+<li><a href="photos" data-icon="star" data-theme="b">Photo Gallery</a></li>
+<li><a href="centers" data-icon="grid" data-theme="b">Coaching Centers</a></li>
 </ul>
 </div>
 </header>
  
 <div data-role="main" class="ui-content">
-	<h2>Recent Tournament</h2>
-  <iframe width="300" height="300" src="https://www.youtube.com/embed/ilnaRtowBpw" frameborder="0" allowfullscreen></iframe>
+<marquee>Site under construction, please visit my blog <a href="https://tt-india.blogspot.in">Table Tennis India</a></marquee>
+  <img src="<c:url value="../img/homepage_img.jpg" />" alt="Our Goal" width="1600" height="800">
 </div>
   
 <div data-role="footer" data-position="fixed">
-
 <div data-role="navbar">
 <ul>
-<li><a href="mailto:dinaki08tt@gmail.com" class="ui-btn-active" data-icon="mail" data-theme="b">Email</a></li>
 <li><a href="tel:919176158249" data-icon="phone" data-theme="b">Call me</a></li>
-<li><a href="whatsapp://send?text=ADK Table Tennis Academy!" data-icon="phone" data-theme="b" data-action="share/whatsapp/share">Whatsapp</a></li>
+<li><a href="mailto:dinaki08tt@gmail.com" class="ui-btn-active" data-icon="mail" data-theme="b">Email</a></li>
+<li><a href="whatsapp://send?text=www.adktta.com" data-icon="phone" data-theme="b" data-action="share/whatsapp/share">Whatsapp</a></li>
 </ul>
 </div>
 <p align="center">ADK Table Tennis Academy is affiliated to Coimbatore District Table Tennis Association</p>

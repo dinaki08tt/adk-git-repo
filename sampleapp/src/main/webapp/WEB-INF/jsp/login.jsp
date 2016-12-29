@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login Form</title>
+<title>ADK Tournament Manager</title>
 </head>
 <body>
 	<center>
 
-		<h1>Welcome to Spring Security Learning</h1>
+		<h1>Welcome to ADK Tournament Manager App!!</h1>
 
 
 		<div
