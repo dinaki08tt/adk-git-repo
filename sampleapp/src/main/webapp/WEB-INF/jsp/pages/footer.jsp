@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<div data-role="footer" data-position="fixed">
+<div data-role="footer">
 
 <div data-role="navbar">
 <ul>
@@ -9,5 +9,5 @@
 <li><a href="whatsapp://send?text=www.adktta.com" data-icon="phone" data-theme="b" data-action="share/whatsapp/share">Whatsapp</a></li>
 </ul>
 </div>
-<p align="center">ADK Table Tennis Academy is affiliated to Coimbatore District Table Tennis Association</p>
+<p align="center">ADK Table Tennis Academy is affiliated to Society for Promotion of Table Tennis</p>
 </div>

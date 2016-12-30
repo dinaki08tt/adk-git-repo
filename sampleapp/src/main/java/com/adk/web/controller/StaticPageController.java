@@ -41,6 +41,22 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
+	@RequestMapping("/static/spott")
+	public ModelAndView spott(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+			return new ModelAndView("pages/location_spott");
+
+	}
+	
+	@RequestMapping("/static/srivari")
+	public ModelAndView srivari(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+			return new ModelAndView("pages/location_srivari");
+
+	}
+	
 	@RequestMapping("/static/home")
 	public ModelAndView home(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

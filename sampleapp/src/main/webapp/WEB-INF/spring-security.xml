@@ -12,6 +12,7 @@
         <security:intercept-url pattern="/connect/facebook**" access="permitAll" />
         <security:intercept-url pattern="/static/**" access="permitAll" />
         <security:intercept-url pattern="/img/**" access="permitAll" />
+        <security:intercept-url pattern="/styles/**" access="permitAll" />
         
     </security:http>
  

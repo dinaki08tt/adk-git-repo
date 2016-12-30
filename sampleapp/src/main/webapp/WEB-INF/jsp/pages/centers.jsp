@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +17,8 @@
 <!-- Include the jQuery Mobile library -->
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-<script src="../js/tour.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../styles/styles.css">
+<link rel="stylesheet" type="text/css" href="<c:url value="/styles/styles.css" />">
 
 <title>ADK Table Tennis Academy</title>
 </head>
@@ -29,8 +29,10 @@
 <div data-role="main" class="ui-content">
 	<h2>Other Centers</h2>
     <ul data-role="listview" data-inset="true">    
-      <li data-icon="location" data-transition="flip"><a href="adk">ADK Table Tennis Academy</a></li>
-      <li data-icon="location" data-transition="slide"><a href="psg">Department of Physical Education, PSG Tech</a></li>   
+      <li data-icon="location" data-transition="turn"><a href="adk">ADK Table Tennis Academy</a></li>
+      <li data-icon="location" data-transition="turn"><a href="psg">Department of Physical Education, PSG Tech</a></li>   
+      <li data-icon="location" data-transition="turn"><a href="spott">Society for Promotion of Table Tennis Coaching Center</a></li>   
+      <li data-icon="location" data-transition="turn"><a href="srivari">Sri Vari Mansarovar Apartment</a></li>   
       </ul>
   </div>
 <%@ include file="footer.jsp" %>
