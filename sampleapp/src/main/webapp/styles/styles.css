@@ -3,15 +3,6 @@ img {
      heigth:100px;
 }
 
-/*@font-face {
-   font-family: Dancing_Script;
-   src: url(./Dancing_Script/DancingScript-Regular.ttf);
-}
-
-div {
-	font-family: Dancing_Script;
-}
-*/
 @font-face {
    font-family: Comfortaa;
    src: url(./Comfortaa/Comfortaa-Regular.ttf);
@@ -19,4 +10,9 @@ div {
 
 div {
 	font-family: Comfortaa;
+}
+
+.certify{
+	background-image: url("../img/gdrive_icon.jpg");
+    /*background-repeat: repeat-x;*/
 }

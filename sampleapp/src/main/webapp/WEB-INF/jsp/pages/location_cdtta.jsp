@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<!DOCTYPE html>
 <html>
 <head>
@@ -26,16 +26,17 @@
 
 <div data-role="page" id="pageone">
 <%@ include file="menubar.jsp" %>
+ 
 <div data-role="main" class="ui-content">
-	<h2>Other Centers</h2>
-    <ul data-role="listview" data-inset="true">    
-      <li data-icon="location"><a href="adk">ADK Table Tennis Academy</a></li>
-      <li data-icon="location"><a href="cdtta">CDTTA, Recreational Center</a></li>
-      <li data-icon="location"><a href="psg">Department of Physical Education, PSG Tech</a></li>   
-      <li data-icon="location"><a href="spott">Society for Promotion of Table Tennis Coaching Center</a></li>   
-      <li data-icon="location"><a href="srivari">Sri Vari Mansarovar Apartment</a></li>   
-      </ul>
-  </div>
+	<h2>CDTTA, Recreational center</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15664.762769654937!2d76.994095!3d11.024315!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7b90f1a016e61719!2sCDTTA+TABLE+TENNIS+ACADEMY!5e0!3m2!1sen!2sin!4v1483151355387" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+	<div>
+		<h2><p>Contact</p></h2>
+		<p><a href="tel:918098820089" id="callme" data-role="button" data-inline="true" data-theme="b" data-icon="phone">Call in-charge</a></p>
+	</div>
+</div>
+  
+ 
 <%@ include file="footer.jsp" %>
 
 </div>

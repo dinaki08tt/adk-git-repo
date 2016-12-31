@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="google-site-verification" content="-el5Wkjede4LD9AV_EIerJnnx-ukXOPrBRupwLAF7fo" />
 <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="57x57" href="<c:url value="/img/favicon/apple-icon-57x57.png" />">
 <link rel="apple-touch-icon" sizes="60x60" href="<c:url value="/img/favicon/apple-icon-60x60.png" />">
@@ -59,6 +60,9 @@
 // };
 </script>
 
+<meta name="keywords" content="Table Tennis Coach, Table Tennis Coaching Center, Table Tennis Academy, Table Tennis Clubs, Table Tennis Coaches, Table Tennis University, Table Tennis Master, Table Tennis Expert, Table Tennis Coaching Tutorials, Coimbatore District Table Tennis Association, Table Tennis Coaching Wiki, Table Tennis in Schools Program, Table Tennis Coimbatore, Table Tennis Athelate, Table Tennis Players, Table Tennis Professional, ITTF, TTFI" />
+
+
 </head>
 <body>
 <div data-role="page" id="pageone">
@@ -69,6 +73,7 @@
 <li><a href="static/home" class="ui-btn-active" data-icon="home" data-theme="b" data-transition="flip">Home</a></li>
 <li><a href="photos" data-icon="star" data-theme="b" data-transition="flip">Photo Gallery</a></li>
 <li><a href="centers" data-icon="grid" data-theme="b" data-transition="slide">Coaching Centers</a></li>
+<li><a href="certification" data-icon="info" data-theme="b" data-transition="slide">Certification</a></li>
 </ul>
 </div>
 </header>

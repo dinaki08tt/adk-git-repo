@@ -33,6 +33,14 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
+	@RequestMapping("/static/cdtta")
+	public ModelAndView cdtta(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+			return new ModelAndView("pages/location_cdtta");
+
+	}
+	
 	@RequestMapping("/static/psg")
 	public ModelAndView psg(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -73,5 +81,13 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
+	
+	@RequestMapping("/static/certification")
+	public ModelAndView certification(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 
+			return new ModelAndView("pages/certification");
+
+	}
+	
 }
