@@ -10,7 +10,7 @@
         <security:intercept-url pattern="/rest/**" access="hasRole('ROLE_USER')" />
         
         <security:intercept-url pattern="/connect/facebook**" access="permitAll" />
-        <security:intercept-url pattern="/static/**" access="permitAll" />
+        <security:intercept-url pattern="/tabletenniscoimbatore/**" access="permitAll" />
         <security:intercept-url pattern="/img/**" access="permitAll" />
         <security:intercept-url pattern="/styles/**" access="permitAll" />
         <security:intercept-url pattern="/site**" access="permitAll" />

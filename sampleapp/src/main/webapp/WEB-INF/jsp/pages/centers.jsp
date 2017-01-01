@@ -3,41 +3,44 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<!-- Include meta tag to ensure proper rendering and touch zooming -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-
-<!-- Include the jQuery library -->
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Include the jQuery Mobile library -->
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<c:url value="/styles/styles.css" />">
-
-<title>ADK Table Tennis Academy</title>
-</head>
+<%@ include file="head.jsp" %>
 <body>
-
-<div data-role="page" id="pageone">
 <%@ include file="menubar.jsp" %>
-<div data-role="main" class="ui-content">
-	<h2>Other Centers</h2>
-    <ul data-role="listview" data-inset="true">    
-      <li data-icon="location"><a href="adk">ADK Table Tennis Academy</a></li>
-      <li data-icon="location"><a href="cdtta">CDTTA, Recreational Center</a></li>
-      <li data-icon="location"><a href="psg">Department of Physical Education, PSG Tech</a></li>   
-      <li data-icon="location"><a href="spott">Society for Promotion of Table Tennis Coaching Center</a></li>   
-      <li data-icon="location"><a href="srivari">Sri Vari Mansarovar Apartment</a></li>   
-      </ul>
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+    	<h2><p>Buy 3star Balls</p></h2>
+		<p><a target="_blank" class="btn3d btn btn-default btn-lg" href="https://www.amazon.in/s/ref=nb_sb_noss_2?url=node%3D3403668031&field-keywords=Balls&rh=n%3A3403668031%2Ck%3ABalls&_encoding=UTF8&tag=dinaki08tt-21&linkCode=ur2&linkId=1f513a895c5f01a82f8e9106b98282d8&camp=3638&creative=24630">Buy TT Balls</a><img src="//ir-in.amazon-adsystem.com/e/ir?t=dinaki08tt-21&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+	  </div>
+        <%@ include file="contact.jsp" %>
+    </div>
+    <div class="col-sm-8 text-left"> 
+    	<h2>Other Centers</h2>
+  <div class="list-group">
+    <a href="adk" class="list-group-item list-group-item disabled">ADK Table Tennis Academy <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
+    <a href="cdtta" class="list-group-item list-group-item-info">CDTTA, Esso bunk <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
+    <a href="psg" class="list-group-item list-group-item-warning">Department of Physical Education, PSG Tech <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
+    <a href="spott" class="list-group-item list-group-item-danger">Society for Promotion of Table Tennis Coaching Center <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
+    <a href="srivari" class="list-group-item list-group-item-success">Sri Vari Mansarovar Apartment <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
   </div>
+      <hr>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+	<%@ include file="amazon_ads.jsp" %>
+	 </div>
+      
+    </div>
+  </div>
+</div>
+	
+
+
+
+ 
 <%@ include file="footer.jsp" %>
 
-</div>
 </body>
 </html>

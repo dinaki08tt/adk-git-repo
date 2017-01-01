@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 public class StaticPageController extends MultiActionController{
 
 	
-	@RequestMapping("/static/centers")
+	@RequestMapping("/tabletenniscoimbatore/centers")
 	public ModelAndView centers(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -25,7 +25,7 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
-	@RequestMapping("/static/adk")
+	@RequestMapping("/tabletenniscoimbatore/adk")
 	public ModelAndView adk(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -33,7 +33,7 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
-	@RequestMapping("/static/cdtta")
+	@RequestMapping("/tabletenniscoimbatore/cdtta")
 	public ModelAndView cdtta(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -41,7 +41,7 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
-	@RequestMapping("/static/psg")
+	@RequestMapping("/tabletenniscoimbatore/psg")
 	public ModelAndView psg(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -49,7 +49,7 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
-	@RequestMapping("/static/spott")
+	@RequestMapping("/tabletenniscoimbatore/spott")
 	public ModelAndView spott(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -57,7 +57,7 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
-	@RequestMapping("/static/srivari")
+	@RequestMapping("/tabletenniscoimbatore/srivari")
 	public ModelAndView srivari(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -65,7 +65,7 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
-	@RequestMapping("/static/home")
+	@RequestMapping("/tabletenniscoimbatore/home")
 	public ModelAndView home(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -73,7 +73,7 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
-	@RequestMapping("/static/photos")
+	@RequestMapping("/tabletenniscoimbatore/photos")
 	public ModelAndView photos(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -82,7 +82,7 @@ public class StaticPageController extends MultiActionController{
 	}
 	
 	
-	@RequestMapping("/static/certification")
+	@RequestMapping("/tabletenniscoimbatore/certification")
 	public ModelAndView certification(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 

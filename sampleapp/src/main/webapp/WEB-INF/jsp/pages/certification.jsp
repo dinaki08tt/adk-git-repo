@@ -3,49 +3,38 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<!DOCTYPE html>
 <html>
-<head>
-
-<meta http-equiv="Expires" CONTENT="0">
-<meta http-equiv="Cache-Control" CONTENT="no-cache">
-<meta http-equiv="Pragma" CONTENT="no-cache">
-<!-- Include meta tag to ensure proper rendering and touch zooming -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-
-<!-- Include the jQuery library -->
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Include the jQuery Mobile library -->
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="<c:url value="/styles/styles.css" />">
-
-<meta charset="ISO-8859-1">
-<title>ADK Table Tennis Academy</title>
-</head>
+<%@ include file="head.jsp" %>
 <body>
-
-<div data-role="page" id="pageone">
 <%@ include file="menubar.jsp" %>
-<div data-role="main" class="ui-content">
-	<h2>One Month Certification, course content</h2>
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+    	<h2><p>Beginner Racket</p></h2>
+		<p><a target="_blank" class="btn btn-primary btn-lg btn3d" href="https://www.amazon.in/GKI-Kung-Fu-Tennis-Racquet/dp/B00I7QXEZW/ref=sr_1_2?s=sports&ie=UTF8&qid=1483286589&sr=1-2&keywords=gki+kungfu+dx&_encoding=UTF8&tag=dinaki08tt-21&linkCode=ur2&linkId=f13c64058c775c9a4afc3aabdb0b59f2&camp=3638&creative=24630">GKI Kungfu</a><img src="//ir-in.amazon-adsystem.com/e/ir?t=dinaki08tt-21&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+	  </div>
+     <%@ include file="contact.jsp" %>
+    </div>
+    <div class="col-sm-8 text-left"> 
+    	<h2>One Month Certification, course content</h2>
 	<table>
 	<tr>
 	<td><img id="image-1" width="30" height="60" alt="Open in Google Drive" src="<c:url value="/img/gdrive_icon.jpg" />"/></td>
 	<td><a target="_blank" href="https://drive.google.com/file/d/0B4L6qN0xPYMQQ1MweURKckNKTzg/view?usp=sharing" class="ui-btn">Open in Google Drive</a></td>
 	</tr>
 	</table>
-    
-    
-    <div>
-		<h2><p>Contact</p></h2>
-		<p><a href="tel:919176158249" id="callme" data-role="button" data-inline="true" data-theme="b" data-icon="phone">Call in-charge</a></p>
-	</div>
+
+      <hr>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+	<%@ include file="amazon_ads.jsp" %>
+	 </div>
+      
+    </div>
   </div>
-<%@ include file="footer.jsp" %>
 </div>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>
