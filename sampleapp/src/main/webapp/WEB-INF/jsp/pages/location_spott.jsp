@@ -13,7 +13,10 @@
     	<h2><p>Search a Racket</p></h2>
 		<p><a target="_blank" class="btn btn-warning btn-lg btn3d" href="https://www.amazon.in/gp/search?ie=UTF8&tag=dinaki08tt-21&linkCode=ur2&linkId=c648f97d9dd77cb64c9c619937604c1d&camp=3638&creative=24630&index=sporting&keywords=Table Tennis">Search</a><img src="//ir-in.amazon-adsystem.com/e/ir?t=dinaki08tt-21&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
 	  </div>
-           <%@ include file="contact.jsp" %>
+           <div class="well">
+<h2><p>Contact SPOTT in-charge</p></h2>
+<p><a href="tel:919443362800" id="callus" class="btn btn-magick btn-lg btn3d"> <i class="fa fa-phone" aria-hidden="true"></i> Call us</a></p>	
+</div>
     </div>
     <div class="col-sm-8 text-left"> 
 	<h2>Society for Promotion of Table Tennis Coaching center, @ Central Excise Quarters </h2>

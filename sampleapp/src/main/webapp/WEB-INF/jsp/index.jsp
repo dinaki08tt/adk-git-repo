@@ -23,6 +23,7 @@
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Our Goal</h1>
+      <p><img style="float:left" class="img-responsive" src="<c:url value="/img/homepage_img.jpg" />"/></p>
       <p> Welcome to my web application! Myself Dinesh Krishnan A, I provide personal coaching for beginners, Intermediate table tennis players. 
   My Goal is to create quality Table Tennis players in Coimbatore district. 
   I run an Academy which is affiliated to Coimbatore District Table Tennis Association and closely associated with Society for Promotion of Table Tennis. 

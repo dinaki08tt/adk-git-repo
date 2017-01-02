@@ -5,6 +5,7 @@
 <html>
 <%@ include file="head.jsp" %>
 <body>
+
 <%@ include file="menubar.jsp" %>
 <div class="container-fluid text-center">    
   <div class="row content">
@@ -17,13 +18,9 @@
     </div>
     <div class="col-sm-8 text-left"> 
     	<h2>One Month Certification, course content</h2>
-	<table>
-	<tr>
-	<td><img id="image-1" width="30" height="60" alt="Open in Google Drive" src="<c:url value="/img/gdrive_icon.jpg" />"/></td>
-	<td><a target="_blank" href="https://drive.google.com/file/d/0B4L6qN0xPYMQQ1MweURKckNKTzg/view?usp=sharing" class="ui-btn">Open in Google Drive</a></td>
-	</tr>
-	</table>
-
+	
+    	<img id="image-1" style="float:left" class="img-responsive" width="50" height="30" alt="Open in Google Drive" src="<c:url value="/img/gdrive_icon.jpg" />"/>
+    	<a class="btn btn-primary btn-lg btn3d" target="_blank" href="https://drive.google.com/file/d/0B4L6qN0xPYMQQ1MweURKckNKTzg/view?usp=sharing">Open in Google Drive</a>
       <hr>
     </div>
     <div class="col-sm-2 sidenav">

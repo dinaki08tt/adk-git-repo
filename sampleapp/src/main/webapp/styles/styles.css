@@ -12,6 +12,13 @@ div {
 }
 
 
+/* custom icon for blogger*/
+.icon-blogger {
+    background-image: url("../img/Google_Blogger.png");
+    background-position: center center;
+}
+
+/* custom icon for blogger ends*/
 /* 3D buttons */
 .btn3d {
     position:relative;

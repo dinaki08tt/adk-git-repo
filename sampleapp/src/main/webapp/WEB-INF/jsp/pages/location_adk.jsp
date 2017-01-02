@@ -10,8 +10,8 @@
   <div class="row content">
     <div class="col-sm-2 sidenav">
     <div class="well">
-		<h2><p>Products</p></h2>
-		<p><a target="_blank" class="btn btn-info btn-lg btn3d" href="https://www.amazon.in/s/ref=sr_nr_p_89_0?fst=as%3Aoff&rh=n%3A1984443031%2Cn%3A3403668031%2Ck%3AButterfly+Rubbers%2Cp_89%3ADONIC%7CJoola%7CTibhar%7CYasaka&bbn=3403668031&keywords=Butterfly+Rubbers&ie=UTF8&qid=1483286353&_encoding=UTF8&tag=dinaki08tt-21&linkCode=ur2&linkId=bf239e075ec5869ffced0003d058de93&camp=3638&creative=24630">Products for Level 1 Players</a><img src="//ir-in.amazon-adsystem.com/e/ir?t=dinaki08tt-21&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>	
+		<h2>TT Rackets</h2>
+		<p><a target="_blank" class="btn btn-info btn-lg btn3d" href="https://www.amazon.in/s/ref=sr_nr_p_89_0?fst=as%3Aoff&rh=n%3A1984443031%2Cn%3A3403668031%2Ck%3AButterfly+Rubbers%2Cp_89%3ADONIC%7CJoola%7CTibhar%7CYasaka&bbn=3403668031&keywords=Butterfly+Rubbers&ie=UTF8&qid=1483286353&_encoding=UTF8&tag=dinaki08tt-21&linkCode=ur2&linkId=bf239e075ec5869ffced0003d058de93&camp=3638&creative=24630">Products</a><img src="//ir-in.amazon-adsystem.com/e/ir?t=dinaki08tt-21&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>	
       </div>
     
      <%@ include file="contact.jsp" %>
