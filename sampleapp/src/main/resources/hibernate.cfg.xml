@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory name="sampletest">
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">ec2rootpass</property>
+        <property name="hibernate.connection.password">root</property>
 <!--         <property name="hibernate.connection.url">jdbc:mysql://rds-mysql-10mintutorial.cidfjc2funh6.ap-southeast-1.rds.amazonaws.com:3306/adktm?createDatabaseIfNotExist=true</property> -->
                 <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/adktm?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>

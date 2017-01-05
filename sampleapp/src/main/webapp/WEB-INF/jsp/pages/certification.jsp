@@ -20,7 +20,7 @@
     	<h2>One Month Certification, course content</h2>
 	
     	<img id="image-1" style="float:left" class="img-responsive" width="50" height="30" alt="Open in Google Drive" src="<c:url value="/img/gdrive_icon.jpg" />"/>
-    	<a class="btn btn-primary btn-lg btn3d" target="_blank" href="https://drive.google.com/file/d/0B4L6qN0xPYMQQ1MweURKckNKTzg/view?usp=sharing">Open in Google Drive</a>
+    	<a class="btn btn-primary btn-lg btn3d" target="_blank" href="https://drive.google.com/file/d/0B4L6qN0xPYMQQ1dpTXNZcnNGLTA">Open with Google Drive</a>
       <hr>
     </div>
     <div class="col-sm-2 sidenav">

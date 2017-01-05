@@ -26,15 +26,15 @@ import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 @Configuration
 public class SocialConfiguration {
 
-    @Value("${facebook.clientId}")
+    @Value("${spring.social.facebook.appId}")
     private String facebookClientId;
-    @Value("${facebook.clientSecret}")
+    @Value("${spring.social.facebook.appSecret}")
     private String facebookClientSecret;
 
-    @Value("${twitter.consumerKey}")
-    private String twitterConsumerKey;
-    @Value("${twitter.consumerSecret}")
-    private String twitterConsumerSecret;
+//    @Value("${twitter.consumerKey}")
+//    private String twitterConsumerKey;
+//    @Value("${twitter.consumerSecret}")
+//    private String twitterConsumerSecret;
 
     @Inject
     private DataSource dataSource;

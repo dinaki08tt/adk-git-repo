@@ -22,9 +22,10 @@
 <meta name="theme-color" content="#ffffff">
 <!-- favicon ends -->
 
-<meta http-equiv="Expires" CONTENT="0">
-<meta http-equiv="Cache-Control" CONTENT="no-cache">
-<meta http-equiv="Pragma" CONTENT="no-cache">
+<!-- <meta http-equiv="Expires" CONTENT="0"> -->
+<!-- <meta http-equiv="Cache-Control" CONTENT="no-cache"> -->
+<!-- <meta http-equiv="Pragma" CONTENT="no-cache"> -->
+<title>Personal Trainer, adktta.com</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Include jQuery Mobile stylesheets -->
@@ -41,21 +42,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-// $(document).ready(function() { /*code here */ 
+$(document).ready(function() { /*code here */ 
 	
-	
-// 	$().headerOnAllPages();
-// });
 
-
-// $.fn.headerOnAllPages = function() {
-//     var theHeader = $('#constantheader-wrapper').html();
-//     var allPages = $('div[data-role="page"]');
-
-//     for (var i = 1; i < allPages.length; i++) {
-//         allPages[i].innerHTML = theHeader + allPages[i].innerHTML;
-//     }
-// };
+});
 </script>
 
 <meta name="keywords" content="Table Tennis Coach, Table Tennis Coaching Center, Table Tennis Academy, Table Tennis Clubs, Table Tennis Coaches, Table Tennis University, Table Tennis Master, Table Tennis Expert, Table Tennis Coaching Tutorials, Coimbatore District Table Tennis Association, Table Tennis Coaching Wiki, Table Tennis in Schools Program, Table Tennis Coimbatore, Table Tennis Athelate, Table Tennis Players, Table Tennis Professional, ITTF, TTFI" />

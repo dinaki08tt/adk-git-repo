@@ -16,10 +16,28 @@
    <mvc:resources mapping="/styles/**" location="/styles/" />
    <mvc:resources mapping="/site**" location="/" />
    <mvc:resources mapping="/robo**" location="/" />
+ 
+   	<bean id="homeController"
+		class="com.adk.web.controller.HomeController" />
+   
+   <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+       <property name="mappings">
+    		<props>
+    		    <prop key="/admin">homeController</prop>
+    		</props>       
+       </property>
+       
+   </bean>
    
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name="prefix" value="/WEB-INF/jsp/" />
       <property name="suffix" value=".jsp" />
    </bean>
- 
+
+   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:application.properties</value>
+		</property>
+	</bean>
+   
 </beans>

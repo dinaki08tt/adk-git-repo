@@ -90,4 +90,12 @@ public class StaticPageController extends MultiActionController{
 
 	}
 	
+//	@RequestMapping("/tabletenniscoimbatore/minishop")
+//	public ModelAndView minishop(HttpServletRequest request,
+//			HttpServletResponse response) throws Exception {
+//
+//			return new ModelAndView("pages/amazonmini");
+//
+//	}
+	
 }
