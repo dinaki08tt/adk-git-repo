@@ -17,13 +17,13 @@
    <mvc:resources mapping="/site**" location="/" />
    <mvc:resources mapping="/robo**" location="/" />
  
-   	<bean id="homeController"
-		class="com.adk.web.controller.HomeController" />
+   	<bean id="adminController"
+		class="com.adk.web.controller.AdminController" />
    
    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
        <property name="mappings">
     		<props>
-    		    <prop key="/admin">homeController</prop>
+    		    <prop key="/admin">adminController</prop>
     		</props>       
        </property>
        

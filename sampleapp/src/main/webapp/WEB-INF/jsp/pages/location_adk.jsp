@@ -23,6 +23,7 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2764100326895!2d77.01304331480294!3d11.017875992157933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8578191ae3e3b%3A0xada849122ca40502!2sADK+Table+Tennis+Academy!5e0!3m2!1sen!2sin!4v1481866996309" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
       <hr>
+      
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">

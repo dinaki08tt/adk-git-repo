@@ -22,7 +22,7 @@
     <a href="adk" class="list-group-item list-group-item disabled">ADK Table Tennis Academy <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
     <a href="cdtta" class="list-group-item list-group-item-info">CDTTA, Esso bunk <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
     <a href="psg" class="list-group-item list-group-item-warning">Department of Physical Education, PSG Tech <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
-    <a href="spott" class="list-group-item list-group-item-danger">Society for Promotion of Table Tennis Coaching Center <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
+    <a href="spott" class="list-group-item list-group-item-danger">Society for Promotion of Table Tennis Coaching Center, Lady trainers available <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
     <a href="srivari" class="list-group-item list-group-item-success">Sri Vari Mansarovar Apartment <i class="fa fa-location-arrow" aria-hidden="true"></i></a>
   </div>
       <hr>

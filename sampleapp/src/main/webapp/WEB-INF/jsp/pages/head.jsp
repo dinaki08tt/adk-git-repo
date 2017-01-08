@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <head>
+<meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <meta name="google-site-verification" content="-el5Wkjede4LD9AV_EIerJnnx-ukXOPrBRupwLAF7fo" />
 <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="57x57" href="<c:url value="/img/favicon/apple-icon-57x57.png" />">
@@ -25,11 +28,11 @@
 <!-- <meta http-equiv="Expires" CONTENT="0"> -->
 <!-- <meta http-equiv="Cache-Control" CONTENT="no-cache"> -->
 <!-- <meta http-equiv="Pragma" CONTENT="no-cache"> -->
-<title>Personal Trainer, adktta.com</title>
+<title>Professionals Circle of Coimbatore</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Include jQuery Mobile stylesheets -->
-<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -40,6 +43,9 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/styles/styles.css" />">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function() { /*code here */ 

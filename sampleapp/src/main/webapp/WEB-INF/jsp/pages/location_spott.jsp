@@ -19,13 +19,15 @@
 </div>
     </div>
     <div class="col-sm-8 text-left"> 
-	<h2>Society for Promotion of Table Tennis Coaching center, @ Central Excise Quarters </h2>
+	
+	<h2>Society for Promotion of Table Tennis Coaching center, @ Central Excise Quarters</h2>
+	<MARQUEE SCROLLDELAY=200><i class="fa fa-female" aria-hidden="true"></i> Lady Trainers Available @ this location <i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i></MARQUEE>
     <div class="embed-responsive embed-responsive-16by9">
 	
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.211546700944!2d76.97258821388371!3d11.022748792154676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8585033847601%3A0x0!2zMTHCsDAxJzIxLjkiTiA3NsKwNTgnMjkuMiJF!5e0!3m2!1sen!2sin!4v1483110706596" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 	</div>
-
       <hr>
+      
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">

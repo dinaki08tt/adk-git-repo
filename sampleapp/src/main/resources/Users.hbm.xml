@@ -14,7 +14,7 @@
         <property name="enabled" type="boolean">
             <column name="enabled" not-null="true" />
         </property>
-        <set name="authoritieses" table="authorities" inverse="true" lazy="true" fetch="select">
+        <set name="authoritieses" table="authorities" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="username" length="50" not-null="true" />
             </key>

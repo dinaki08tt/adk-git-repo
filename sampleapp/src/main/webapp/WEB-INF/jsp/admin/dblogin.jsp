@@ -72,8 +72,13 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function() { /*code here */ 
-
-	
+	$(function () {
+	    var token = $("meta[name='_csrf']").attr("content");
+	    var header = $("meta[name='_csrf_header']").attr("content");
+	    $(document).ajaxSend(function(e, xhr, options) {
+	        xhr.setRequestHeader(header, token);
+	    });
+	});
 
 	
 $("#login").click(function(){
@@ -87,23 +92,29 @@ $("#login").click(function(){
 		  return "Basic " + hash;
 	}
 
-	var posturl = context+"/rest/admin/login/"+user+"/"+pass;
+	var posturl = context+"/rest/admin/login/"+user;
 
+	//alert(posturl);
 
 
 	$.ajax
 	  ({
 	    type: "POST",
 	    url: posturl,
-	    dataType: 'json',
-	    async: false,
-	    data: '{}',
+	    dataType: 'text',
+// 	    async: false,
+// 	    data: '{}',
 	    beforeSend: function (xhr){ 
 	        xhr.setRequestHeader('Authorization', make_base_auth(user, pass)); 
 	    },
-	    success: function (){
-	        alert('Thanks for your comment!'); 
-	    }
+	    success: function (data){
+	    	window.location.href = "<c:url value="/admin/home"/>";
+
+		 },
+	    error: function(e){
+			alert('Error Occured');
+		console.log(e);
+		}
 	});
 
 	

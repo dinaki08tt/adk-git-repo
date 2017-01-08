@@ -7,8 +7,8 @@
  
     
     <security:http auto-config="true">
-        <security:intercept-url pattern="/rest/admin**" access="permitAll" />
-        <security:intercept-url pattern="/rest/events**" access="hasRole('ROLE_USER')" />
+        <security:intercept-url pattern="/rest/admin/login/**" access="hasRole('ROLE_USER')" />
+        <security:intercept-url pattern="/rest/**" access="hasRole('ROLE_USER')" />
         
         <security:intercept-url pattern="/connect/facebook**" access="permitAll" />
         <security:intercept-url pattern="/tabletenniscoimbatore/**" access="permitAll" />
@@ -16,6 +16,7 @@
         <security:intercept-url pattern="/styles/**" access="permitAll" />
         <security:intercept-url pattern="/site**" access="permitAll" />
         <security:intercept-url pattern="/admin/login**" access="permitAll" />
+        <security:intercept-url pattern="/admin/home" access="hasRole('ROLE_USER')" />
         
     </security:http>
  

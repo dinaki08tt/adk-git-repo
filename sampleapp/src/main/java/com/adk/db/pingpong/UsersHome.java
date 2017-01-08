@@ -178,19 +178,24 @@ public class UsersHome {
 		return false;
 	}
 
-	private Users findByName(String name) {
-		Session s = sessionFactory.getCurrentSession();
-		Transaction tx = s.beginTransaction();
-		Criteria cr = s.createCriteria(Users.class);
-		cr.add(Restrictions.eq("username", name));
-		List list = cr.list();
-		Users t = null;
-		if(list != null && list.size()>0){
-			t = (Users) list.get(0);
-		}else{
-			throw new IllegalStateException("No Records found for User Name = "+ name);
+	public Users findByName(String name) {
+		Session s = sessionFactory.openSession(); //sessionFactory.getCurrentSession();
+		try{
+			Transaction tx = s.beginTransaction();
+			Criteria cr = s.createCriteria(Users.class);
+			cr.add(Restrictions.eq("username", name));
+			List list = cr.list();
+			Users t = null;
+			if(list != null && list.size()>0){
+				t = (Users) list.get(0);
+			}else{
+				throw new IllegalStateException("No Records found for User Name = "+ name);
+			}
+			tx.commit();
+			return t;
+			
+		}finally{
+//			s.close();
 		}
-		tx.commit();
-		return t;
 	}
 }
